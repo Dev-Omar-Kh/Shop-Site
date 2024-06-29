@@ -1,0 +1,29 @@
+.active{
+
+    background-color: var(--dark-color-02);
+
+}
+
+.display_nav{
+
+    top: 70px;
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.display_icon_pro{
+
+    bottom: 80px;
+    opacity: 1;
+    visibility: visible;
+
+}
+
+.display_icon_cart{
+
+    bottom: 20px;
+    opacity: 1;
+    visibility: visible;
+
+}

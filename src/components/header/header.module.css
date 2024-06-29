@@ -1,0 +1,205 @@
+.header{
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px 4.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--light-color);
+    border-bottom: 0.5px solid var(--dark-color-02);
+    z-index: 100;
+
+}
+
+/* === logo === */
+
+.logo{
+
+    width: 126px;
+
+}
+
+.logo img{
+
+    width: 100%;
+
+}
+
+/* === nav === */
+
+.nav ul{
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.nave_link{
+
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--darker-color);
+    transition: 0.3s;
+
+}
+
+.nave_link:hover{
+
+    background-color: var(--dark-color-02);
+
+}
+
+.more{
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.more .icon{
+
+    width: 25.5px;
+    height: 25.5px;
+    cursor: pointer;
+
+}
+
+.more p{
+
+    display: none;
+    color: var(--darker-color);
+
+}
+
+/* === nav-ph === */
+
+.nav_ph{
+
+    display: none;
+
+}
+
+.hamburger {
+    cursor: pointer;
+}
+
+.hamburger input {
+    display: none;
+}
+
+.hamburger svg {
+    /* The size of the SVG defines the overall size */
+    height: 3em;
+    /* Define the transition for transforming the SVG */
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+    fill: none;
+    stroke: var(--darker-color);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+    /* Define the transition for transforming the Stroke */
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line_top_bottom {
+    stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked+svg {
+    transform: rotate(-45deg);
+}
+
+.hamburger input:checked+svg .line_top_bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+}
+
+/* ====== responsive-style ====== */
+
+@media(max-width: 760px){
+
+    .nav{
+
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 70px);
+        padding: 10px 0px;
+        background-color: var(--light-color);
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 0;
+        transition: 0.3s;
+
+    }
+
+    .nav ul{
+
+        flex-direction: column;
+
+    }
+
+    .nave_link{
+
+        width: calc(100% - 40px);
+        text-align: center;
+
+    }
+
+    .nav_ph{
+
+        display: inline-block;
+
+    }
+
+    .profile_icon , .cart_icon{
+
+        position: fixed;
+        left: 20px;
+        width: calc(100% - 40px);
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 4px;
+        border: 1px solid var(--dark-color);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+
+    }
+
+    .cart_icon{
+
+        bottom: 30px;
+
+    }
+
+    .profile_icon{
+
+        bottom: 90px;
+
+    }
+
+    .more p{
+
+        display: inline-block;
+
+    }
+
+}
