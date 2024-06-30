@@ -5,7 +5,7 @@ import Layout from './components/layout/Layout';
 import Products from './components/products/Products';
 import Categories from './components/categories/Categories';
 import Login from './components/login/Login';
-import Register from './components/register/Register';
+import Register from './components/auth/Register';
 import Brands from './components/brands/Brands';
 import Error from './components/error/Error';
 

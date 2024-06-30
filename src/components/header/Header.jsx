@@ -73,7 +73,7 @@ export default function Header() {
         }
 
     }, [count])
-    
+
 
     return <React.Fragment>
 
@@ -100,7 +100,7 @@ export default function Header() {
 
             <div id='more' className={headerCss.more}>
 
-                <NavLink id='prof' to='register' className={headerCss.profile_icon + ' ' + headerCss.icon_cont}>
+                <NavLink id='prof' to='register' className={headerCss.profile_icon}>
 
                     <img className={headerCss.icon} src={profile} alt="profile" />
                     <p>Profile</p>
@@ -109,7 +109,7 @@ export default function Header() {
 
                 <NavLink id='cart' to='cart' className={headerCss.cart_icon}>
 
-                    <img className={headerCss.icon + ' ' + headerCss.icon_cont} src={cart} alt="profile" />
+                    <img className={headerCss.icon} src={cart} alt="profile" />
                     <p>Cart</p>
 
                 </NavLink>

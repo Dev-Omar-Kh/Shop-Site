@@ -58,7 +58,7 @@
 
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 0px;
 
 }
 
@@ -67,6 +67,17 @@
     width: 25.5px;
     height: 25.5px;
     cursor: pointer;
+
+}
+
+.profile_icon , .cart_icon{
+
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: 0.3s;
 
 }
 
