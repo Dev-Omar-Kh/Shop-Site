@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve">
+<desc>Created with Fabric.js 5.2.4</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 540 540)" id="1d1dc0c3-20e5-44ab-8fce-c0fc33fb4289"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+</g>
+<g transform="matrix(1 0 0 1 540 540)" id="c8e1cba7-1549-473f-9cfb-67f3c3ab2a15"  >
+</g>
+<g transform="matrix(NaN NaN NaN NaN 0 0)"  >
+<g style=""   >
+</g>
+</g>
+<g transform="matrix(41.54 0 0 41.54 540 540)"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(39,39,39); fill-rule: evenodd; opacity: 1;"  transform=" translate(-13, -13)" d="M 23.625 25.75 C 23.625 25.75 25.75 25.75 25.75 23.625 C 25.75 21.5 23.625 15.125 13 15.125 C 2.375 15.125 0.25 21.5 0.25 23.625 C 0.25 25.75 2.375 25.75 2.375 25.75 L 23.625 25.75 Z M 2.38563 23.744 L 2.38563 23.7397 L 2.38563 23.744 Z M 2.42175 23.625 L 23.5782 23.625 C 23.5882 23.6238 23.5981 23.6224 23.608 23.6208 L 23.625 23.6165 C 23.6229 23.0938 23.2978 21.5212 21.857 20.0805 C 20.4715 18.695 17.8641 17.25 13 17.25 C 8.13375 17.25 5.5285 18.695 4.143 20.0805 C 2.70225 21.5212 2.37925 23.0938 2.375 23.6165 C 2.39055 23.6195 2.40614 23.6223 2.42175 23.625 Z M 23.6165 23.744 L 23.6165 23.7397 L 23.6165 23.744 Z M 13 10.875 C 14.1272 10.875 15.2082 10.4272 16.0052 9.6302 C 16.8022 8.83317 17.25 7.75217 17.25 6.625 C 17.25 5.49783 16.8022 4.41683 16.0052 3.6198 C 15.2082 2.82277 14.1272 2.375 13 2.375 C 11.8728 2.375 10.7918 2.82277 9.9948 3.6198 C 9.19777 4.41683 8.75 5.49783 8.75 6.625 C 8.75 7.75217 9.19777 8.83317 9.9948 9.6302 C 10.7918 10.4272 11.8728 10.875 13 10.875 Z M 19.375 6.625 C 19.375 8.31575 18.7034 9.93726 17.5078 11.1328 C 16.3123 12.3284 14.6908 13 13 13 C 11.3092 13 9.68774 12.3284 8.49219 11.1328 C 7.29665 9.93726 6.625 8.31575 6.625 6.625 C 6.625 4.93425 7.29665 3.31274 8.49219 2.11719 C 9.68774 0.92165 11.3092 0.25 13 0.25 C 14.6908 0.25 16.3123 0.92165 17.5078 2.11719 C 18.7034 3.31274 19.375 4.93425 19.375 6.625 Z" stroke-linecap="round" />
+</g>
+</svg>
