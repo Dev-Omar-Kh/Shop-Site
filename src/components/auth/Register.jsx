@@ -4,6 +4,7 @@ import authCss  from './auth.module.css';
 
 import eye from '../../images/icons/eye-icon.svg';
 import eyeSlash from '../../images/icons/eye-slash-icon.svg';
+import { Link } from 'react-router-dom';
 
 export default function Register() {
 
@@ -94,7 +95,11 @@ export default function Register() {
 
                     </div>
 
-                    <div className={authCss.check_cont}></div>
+                    <div className={authCss.check_cont}>
+
+                        <p className={authCss.p}>Already have an account? <Link className={authCss.p_link} to='login'>Log in from here</Link> </p>
+
+                    </div>
 
                     <button className={authCss.submit} type="submit">Register</button>
 

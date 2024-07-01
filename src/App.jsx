@@ -4,10 +4,11 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import Products from './components/products/Products';
 import Categories from './components/categories/Categories';
-import Login from './components/login/Login';
+import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Brands from './components/brands/Brands';
 import Error from './components/error/Error';
+import Auth from './components/auth/Auth';
 
 const router = createBrowserRouter([
 
@@ -17,8 +18,14 @@ const router = createBrowserRouter([
         {path : '/products' , element : <Products />},
         {path : '/cate' , element : <Categories />},
         {path : '/brands' , element : <Brands />},
-        {path : '/login' , element : <Login />},
-        {path : '/register' , element : <Register />},
+        // {path : '/login' , element : <Login />},
+        // {path : '/register' , element : <Register />},
+        {path : '/auth' , element : <Auth /> , children : [
+
+            {path : '/auth/' , element : <Register />},
+            {path : '/auth/login' , element : <Login />},
+
+        ]},
 
         {path : '*' , element : <Error />},
 
