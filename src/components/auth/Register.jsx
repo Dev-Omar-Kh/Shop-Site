@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ThreeCircles } from 'react-loader-spinner';
+import { useFormik } from 'formik';
+import axios from 'axios';
 
 import authCss  from './auth.module.css';
 
+import Status from '../status/Status';
+
 import eye from '../../images/icons/eye-icon.svg';
 import eyeSlash from '../../images/icons/eye-slash-icon.svg';
-import { Link, useNavigate } from 'react-router-dom';
-import { useFormik } from 'formik';
-import axios from 'axios';
-import Status from '../status/Status';
 
 export default function Register() {
 
@@ -15,16 +17,19 @@ export default function Register() {
 
     const [success, setSuccess] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [load, setLoad] = useState(false)
 
     const navigate = useNavigate();
 
     async function register(values){
 
+        setLoad(true);
+
         try{
 
             const {data} = await axios.post('https://ecommerce.routemisr.com/api/v1/auth/signup' , values)
 
-            console.log(data);
+            // console.log(data);
 
             if(data.message === 'success'){
 
@@ -34,7 +39,7 @@ export default function Register() {
 
                     navigate('/auth/login');
 
-                } , 2000)
+                } , 3000)
 
             }
 
@@ -44,6 +49,8 @@ export default function Register() {
             setErrorMsg(err.response.data.message)
 
         }
+
+        setLoad(false);
 
     }
 
@@ -139,7 +146,7 @@ export default function Register() {
 
                 setVisible(false);
 
-            }, 2000);
+            }, 3000);
 
             return () => {
 
@@ -158,13 +165,13 @@ export default function Register() {
         {success ? <Status img = {'success'} msg = {success} /> : ''}
         {errorMsg && visible ? <Status img = {'error'} msg = {errorMsg} /> : ''}
 
-        <div className={authCss.register_cont}>
+        <div className={authCss.auth_cont}>
 
             <div className={authCss.left_side}>
 
                 <div className={authCss.title}>Register</div>
 
-                <form onSubmit={formikObject.handleSubmit} className={authCss.form}>
+                <form style={load ? {opacity : '0.6'} : {opacity : '1'}} onSubmit={formikObject.handleSubmit} className={authCss.form}>
 
                     <div className={authCss.input_cont}>
 
@@ -235,7 +242,11 @@ export default function Register() {
 
                     </div>
 
-                    <button  className={authCss.submit} type="submit">Register</button>
+                    <button  className={authCss.submit} type="submit">
+
+                        {load ? <ThreeCircles visible={true} height="20" width="20" color="var(--light-color)" ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""/> : 'Register'}
+
+                    </button>
 
                 </form>
 
