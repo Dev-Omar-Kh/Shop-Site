@@ -244,7 +244,14 @@ export default function Register() {
 
                     <button  className={authCss.submit} type="submit">
 
-                        {load ? <ThreeCircles visible={true} height="20" width="20" color="var(--light-color)" ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""/> : 'Register'}
+                        {load ? 
+                        <ThreeCircles
+
+                            visible={true} height="20" width="20" color="var(--light-color)" 
+                            ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+
+                        />
+                        : 'Register'}
 
                     </button>
 

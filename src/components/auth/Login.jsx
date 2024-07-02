@@ -8,8 +8,9 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import Status from '../status/Status';
 import { ThreeCircles } from 'react-loader-spinner';
+import { useNavigate } from 'react-router-dom';
 
-export default function Register() {
+export default function Login() {
 
     // ====== sending-data-to-login ======
 
@@ -24,6 +25,8 @@ export default function Register() {
     const [errorMsg, setErrorMsg] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
 
+    const navigate = useNavigate()
+
     async function logIn(values){
 
         setIsLoading(true);
@@ -34,8 +37,13 @@ export default function Register() {
 
             if(data.message === 'success'){
 
-                // console.log('Login Successfully');
-                setSuccessMsg('Login Successfully');
+                setSuccessMsg('Successfully logged in');
+
+                setTimeout(() => {
+
+                    navigate('/')
+
+                }, 3000);
 
             }
 
