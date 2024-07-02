@@ -61,7 +61,7 @@ export default function Register() {
 
             <div className={authCss.right_side}>
 
-                <img src={require('../../images/auth.png')} alt="" />
+                <img src={require('../../images/auth-logo-bg.png')} alt="" />
 
             </div>
 

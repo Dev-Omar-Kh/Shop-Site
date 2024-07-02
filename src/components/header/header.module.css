@@ -175,7 +175,7 @@
         left: 0;
         width: 100%;
         height: calc(100% - 70px);
-        padding: 10px 0px;
+        padding: 20px 0px;
         background-color: var(--light-color);
         overflow: hidden;
         visibility: hidden;

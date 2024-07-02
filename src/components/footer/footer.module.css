@@ -80,6 +80,13 @@
     font-weight: 400;
     line-height: 28.8px;
     color: var(--light-color);
+    transition: 0.3s;
+
+}
+
+.parts .p:hover{
+
+    opacity: 0.8;
 
 }
 
@@ -132,6 +139,18 @@
 }
 
 @media(max-width : 545px){
+
+    .first_section{
+
+        width: 170px !important;
+
+    }
+
+    .first_section p{
+
+        font-size: 12px !important;
+
+    }
 
     .parts{
 
