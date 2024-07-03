@@ -9,17 +9,17 @@ import Register from './components/auth/Register';
 import Brands from './components/brands/Brands';
 import Error from './components/error/Error';
 import Auth from './components/auth/Auth';
+import AuthProvider from './contexts/authentication';
+import Home from './components/home/Home';
 
 const router = createBrowserRouter([
 
     {path : '/' , element : <Layout /> , children : [
 
-        {index : true , element : <h1>Home</h1>},
+        {index : true , element : <Home />},
         {path : '/products' , element : <Products />},
         {path : '/cate' , element : <Categories />},
         {path : '/brands' , element : <Brands />},
-        // {path : '/login' , element : <Login />},
-        // {path : '/register' , element : <Register />},
         {path : '/auth' , element : <Auth /> , children : [
 
             {path : '/auth/' , element : <Register />},
@@ -36,7 +36,11 @@ const router = createBrowserRouter([
 export default function App() {
     return <React.Fragment>
 
-        <RouterProvider router={router} />
+        <AuthProvider>
+
+            <RouterProvider router={router} />
+
+        </AuthProvider>
 
     </React.Fragment>
 }

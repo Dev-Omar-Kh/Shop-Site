@@ -39,7 +39,7 @@ export default function Register() {
 
                     navigate('/auth/login');
 
-                } , 3000)
+                } , 3000);
 
             }
 
@@ -177,7 +177,7 @@ export default function Register() {
 
                         <div className={authCss.loader}></div>
                         <label htmlFor='name'><span>Name :</span> {formikObject.errors.name && formikObject.touched.name ? <span className={authCss.error_msg}>* {formikObject.errors.name}</span> : ''}</label>
-                        <input onBlur={formikObject.handleBlur} onChange={formikObject.handleChange} value={formikObject.values.name} id='name' type="text" />
+                        <input disabled={load} onBlur={formikObject.handleBlur} onChange={formikObject.handleChange} value={formikObject.values.name} id='name' type="text" />
 
                     </div>
 
@@ -185,7 +185,7 @@ export default function Register() {
 
                         <div className={authCss.loader}></div>
                         <label htmlFor='email'><span>Email :</span> {formikObject.errors.email && formikObject.touched.email ? <span className={authCss.error_msg}>* {formikObject.errors.email}</span> : ''}</label>
-                        <input onBlur={formikObject.handleBlur} onChange={formikObject.handleChange} value={formikObject.values.email} id='email' type="text" />
+                        <input disabled={load} onBlur={formikObject.handleBlur} onChange={formikObject.handleChange} value={formikObject.values.email} id='email' type="text" />
 
                     </div>
 
@@ -204,7 +204,7 @@ export default function Register() {
                         </div>
 
                         <label htmlFor='password'><span>Password :</span> {formikObject.errors.password && formikObject.touched.password ? <span className={authCss.error_msg}>* {formikObject.errors.password}</span> : ''}</label>
-                        <input onBlur={formikObject.handleBlur} onChange={formikObject.handleChange} value={formikObject.values.password} id='password' type={count % 2 === 0 ? 'password' : 'text'} />
+                        <input disabled={load} onBlur={formikObject.handleBlur} onChange={formikObject.handleChange} value={formikObject.values.password} id='password' type={count % 2 === 0 ? 'password' : 'text'} />
 
                     </div>
 
@@ -223,7 +223,7 @@ export default function Register() {
                         </div>
 
                         <label htmlFor='rePassword'><span>Confirm Password :</span> {formikObject.errors.rePassword && formikObject.touched.rePassword ? <span className={authCss.error_msg}>* {formikObject.errors.rePassword}</span> : ''}</label>
-                        <input onBlur={formikObject.handleBlur} onChange={formikObject.handleChange} value={formikObject.values.rePassword} type={reCount % 2 === 0 ? 'password' : 'text'} id='rePassword' />
+                        <input disabled={load} onBlur={formikObject.handleBlur} onChange={formikObject.handleChange} value={formikObject.values.rePassword} type={reCount % 2 === 0 ? 'password' : 'text'} id='rePassword' />
 
                     </div>
 
@@ -232,17 +232,17 @@ export default function Register() {
                         
                         <div className={authCss.loader}></div>
                         <label htmlFor='phone'><span>Phone :</span> {formikObject.errors.phone && formikObject.touched.phone ? <span className={authCss.error_msg}>* {formikObject.errors.phone}</span> : ''}</label>
-                        <input onBlur={formikObject.handleBlur} onChange={formikObject.handleChange} value={formikObject.values.phone} id='phone' type="tel" />
+                        <input disabled={load} onBlur={formikObject.handleBlur} onChange={formikObject.handleChange} value={formikObject.values.phone} id='phone' type="tel" />
 
                     </div>
 
                     <div className={authCss.check_cont}>
 
-                        <p className={authCss.p}>Already have an account? <Link className={authCss.p_link} to='login'>Log in from here</Link> </p>
+                        <p className={authCss.p}>Already have an account? <Link className={authCss.p_link} to={load ? '' : 'login'}>Log in from here</Link> </p>
 
                     </div>
 
-                    <button  className={authCss.submit} type="submit">
+                    <button disabled={load}  className={authCss.submit} type="submit">
 
                         {load ? 
                         <ThreeCircles

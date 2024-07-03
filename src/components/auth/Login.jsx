@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import authCss  from './auth.module.css';
 
@@ -9,6 +9,7 @@ import { useFormik } from 'formik';
 import Status from '../status/Status';
 import { ThreeCircles } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
+import { authContext } from '../../contexts/authentication';
 
 export default function Login() {
 
@@ -27,6 +28,8 @@ export default function Login() {
 
     const navigate = useNavigate()
 
+    const {setToken} = useContext(authContext);
+
     async function logIn(values){
 
         setIsLoading(true);
@@ -36,6 +39,9 @@ export default function Login() {
             const {data} = await axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin' , values);
 
             if(data.message === 'success'){
+
+                // localStorage.setItem('auth token' , data.token);
+                setToken(data.token);
 
                 setSuccessMsg('Successfully logged in');
 

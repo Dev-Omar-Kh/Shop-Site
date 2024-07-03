@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import headerCss from './header.module.css';
@@ -6,8 +6,11 @@ import './active.css'
 
 import profile from '../../images/icons/profile-icon.svg';
 import cart from '../../images/icons/cart-icon.svg';
+import { authContext } from '../../contexts/authentication';
 
 export default function Header() {
+
+    const {token} = useContext(authContext);
 
     const [count, setCount] = useState(0);
 
@@ -100,14 +103,14 @@ export default function Header() {
 
             <div id='more' className={headerCss.more}>
 
-                <NavLink id='prof' to='/auth' className={headerCss.profile_icon}>
+                <NavLink id='prof' to={ !token ? '/auth' : '/profile'} className={headerCss.profile_icon}>
 
                     <img className={headerCss.icon} src={profile} alt="profile" />
                     <p>Profile</p>
 
                 </NavLink>
 
-                <NavLink id='cart' to='cart' className={headerCss.cart_icon}>
+                <NavLink id='cart' to={token ? '/cart' : '/error'} className={headerCss.cart_icon}>
 
                     <img className={headerCss.icon} src={cart} alt="profile" />
                     <p>Cart</p>
