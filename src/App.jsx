@@ -11,6 +11,7 @@ import Error from './components/error/Error';
 import Auth from './components/auth/Auth';
 import AuthProvider from './contexts/authentication';
 import Home from './components/home/Home';
+import Profile from './components/profile/Profile';
 
 const router = createBrowserRouter([
 
@@ -27,6 +28,8 @@ const router = createBrowserRouter([
 
         ]},
 
+        {path : '/profile' , element : <Profile />},
+
         {path : '*' , element : <Error />},
 
     ]}
@@ -34,6 +37,7 @@ const router = createBrowserRouter([
 ])
 
 export default function App() {
+
     return <React.Fragment>
 
         <AuthProvider>

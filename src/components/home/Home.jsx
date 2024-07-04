@@ -1,13 +1,11 @@
-import React, { useContext } from 'react'
-import { authContext } from '../../contexts/authentication'
+import React from 'react'
 
 export default function Home() {
 
-    const {token} = useContext(authContext)
 
     return <React.Fragment>
 
-        <h1> {token ? token : 'login to show token'} </h1>
+        <h1>Home</h1>
 
     </React.Fragment>
 
