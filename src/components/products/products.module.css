@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.container{
+
+    width: 100%;
+    padding: 0px 4.5%;
+    font-family: "Poppins", sans-serif;
+
+}
+
+/* ====== title-style ====== */
+
+.title{
+
+    padding: 50px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+.title p{
+
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 57.6px;
+    letter-spacing: -0.9px;
+    color: var(--darker-color);
+
+}
+
+.title span{
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27.6px;
+    letter-spacing: 0.1px;
+    color: var(--darker-color);
+    opacity: 0.6;
+
+}
+
+/* ====== cards-style ====== */
+
+.cards_cont{
+
+    width: 100%;
+    margin-bottom: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}
+
+.cards_cont .card{
+
+    width: calc(calc(100% / 5) - 16px);
+    box-shadow: 0px 4px 24px var(--darker-color-015);
+    border-radius: 5px;
+    background-color: var(--light-color);
+    overflow: hidden;
+
+}
+
+.card img{
+
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.det{
+
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.det .cate{
+
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark-color);
+
+}
+
+.det .name{
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27.6px;
+    /* letter-spacing: -0.9px; */
+    color: var(--darker-color);
+
+}
+
+.price_rate{
+
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.price{
+
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--darker-color);
+    opacity: 0.7;
+
+}
+
+.rate{
+
+    font-size: 14px;
+    color: var(--darker-color-040);
+
+}
+
+.rate i{
+
+    margin-right: 5px;
+    color: var(--dark-color);
+
+}
+
+/* ====== responsive-style ====== */
+
+@media(max-width: 1065px){
+
+    .card{
+
+        width: calc(calc(100% / 4) - 15px) !important;
+
+    }
+
+}
+
+@media(max-width: 781px){
+
+    .card{
+
+        width: calc(calc(100% / 3) - calc(20px - calc(20px / 3))) !important;
+
+    }
+
+}
+
+@media(max-width: 594px){
+
+    .card{
+
+        width: calc(calc(100% / 2) - 10px) !important;
+
+    }
+
+}
+
+@media(max-width: 376px){
+
+    .title p{
+
+        font-size: 35px !important;
+
+    }
+
+    .title span{
+
+        font-size: 16px !important;
+
+    }
+
+    .card{
+
+        width: 100% !important;
+
+    }
+
+}

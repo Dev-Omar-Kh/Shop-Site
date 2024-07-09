@@ -41,9 +41,7 @@ export default function Login() {
             if(data.message === 'success'){
 
                 localStorage.setItem('auth_token' , data.token);
-                const tokenStored = localStorage.getItem('auth_token');
-                console.log(tokenStored);
-                setToken(tokenStored);
+                setToken(data.token);
 
                 setSuccessMsg('Successfully logged in');
 

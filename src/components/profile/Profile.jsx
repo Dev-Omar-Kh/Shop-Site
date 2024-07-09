@@ -14,6 +14,7 @@ export default function Profile() {
 
     const deleteUser = () => {
 
+        localStorage.removeItem('auth_token');
         setToken(null);
         navigate('/auth');
 

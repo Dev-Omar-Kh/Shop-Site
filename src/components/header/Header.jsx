@@ -103,7 +103,7 @@ export default function Header() {
 
             <div id='more' className={headerCss.more}>
 
-                <NavLink id='prof' to={ !token ? '/auth' : '/profile'} className={headerCss.profile_icon}>
+                <NavLink id='prof' to={ token === null ? '/auth' : 'profile'} className={headerCss.profile_icon}>
 
                     <img className={headerCss.icon} src={profile} alt="profile" />
                     <p>Profile</p>

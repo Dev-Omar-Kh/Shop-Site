@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Slider from '../slider/Slider';
 
 export default function Home() {
 
 
     return <React.Fragment>
 
-        <h1>Home</h1>
+        <Slider />
 
     </React.Fragment>
 
