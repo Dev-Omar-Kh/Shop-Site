@@ -76,17 +76,28 @@ export default function Slider(){
 
     return <React.Fragment>
 
-        <div className={sliderCss.container}>
+        <div className={sliderCss.slider_container}>
 
-            <div onClick={handlePrev} className={sliderCss.arrows}><i className="fa-solid fa-chevron-left"></i></div>
+            <div className={sliderCss.container}>
 
-            <div className={sliderCss.slide_scroll}>
+                <div onClick={handlePrev} className={sliderCss.arrows}><i className="fa-solid fa-chevron-left"></i></div>
 
-                <img id='images' className={fade ? sliderCss.fade : sliderCss.fade_in} src={images[count]} alt="sliders" />
+                <div className={sliderCss.slide_scroll}>
+
+                    <img id='images' className={fade ? sliderCss.fade : sliderCss.fade_in} src={images[count]} alt="sliders" />
+
+                </div>
+
+                <div onClick={handleNext} className={sliderCss.arrows}><i className="fa-solid fa-chevron-right"></i></div>
 
             </div>
 
-            <div onClick={handleNext} className={sliderCss.arrows}><i className="fa-solid fa-chevron-right"></i></div>
+            <div className={sliderCss.right_img}>
+
+                <img className={fade ? sliderCss.img_out : sliderCss.img_in} src={images[(count + 1) % 3]} alt="" />
+                <img className={fade ? sliderCss.img_out : sliderCss.img_in} src={images[(count + 2) % 3]} alt="" />
+
+            </div>
 
         </div>
 

@@ -1,17 +1,24 @@
+.slider_container{
+
+    width: 100%;
+    padding: 50px 4.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+}
+
 .container{
 
     position: relative;
-    width: calc(75% - 9%);
+    width: calc(70% - 10px);
     height: 500px;
-    margin: 50px 4.5%;
     display: flex;
     align-items: center;
     border-radius: 5px;
     justify-content: center;
     overflow: hidden;
-    /* background-image: url(../../images/first_slide.png);
-    background-repeat: no-repeat;
-    background-size: 100%; */
 
 }
 
@@ -64,26 +71,113 @@
 
     width: 100%;
     height: 100%;
-    opacity: 1;
+    scale: 1;
     filter: blur(0px);
     object-fit: cover;
     transition: 0.3s;
-    transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+    transition: scale 0.3s ease-in-out, filter 0.3s ease-in-out;
 
 }
 
 .slide_scroll img.fade {
 
-    opacity: 0;
+    scale: 1.1;
     filter: blur(10px);
-    /* transition: opacity 0.5s ease-in-out; */
 
 }
 
 .slide_scroll img.fade_in {
 
-    opacity: 1;
+    scale: 1;
     filter: blur(0px);
-    /* transition: opacity 0.5s ease-in-out; */
+
+}
+
+.right_img{
+
+    width: 30%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+
+}
+
+.right_img img{
+
+    width: 100%;
+    height: calc(50% - 5px);
+    scale: 1;
+    filter: blur(0px);
+    border-radius: 5px;
+    object-fit: cover;
+    transition: scale 0.3s ease-in-out , filter 0.3s ease-in-out;
+
+}
+
+.right_img img.img_out{
+
+    scale: 0.9;
+    filter: blur(10px);
+
+}
+
+.right_img img.img_in{
+
+    scale: 1;
+    filter: blur(0px);
+
+}
+
+/* ====== responsive-style ====== */
+
+@media(max-width: 926px){
+
+    .slider_container{
+
+        flex-direction: column !important;
+
+    }
+
+    .container{
+
+        width: 100% !important;
+        height: 300px !important;
+
+    }
+
+    .right_img{
+
+        width: 100%;
+        height: 300px !important;
+        flex-direction: row;
+
+    }
+
+    .right_img img{
+
+        width: calc(50% - 5px) !important;
+        height: 100% !important;
+
+    }
+
+}
+
+@media(max-width: 581px){
+
+    .arrows{
+
+        font-size: 16px !important;
+        width: 25px !important;
+        height: 25px !important;
+
+    }
+
+    .right_img{
+
+        height: 200px !important;
+
+    }
 
 }
