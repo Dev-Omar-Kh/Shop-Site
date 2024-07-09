@@ -81,7 +81,7 @@
 
 .slide_scroll img.fade {
 
-    scale: 1.1;
+    scale: 1.05;
     filter: blur(10px);
 
 }
@@ -113,12 +113,13 @@
     border-radius: 5px;
     object-fit: cover;
     transition: scale 0.3s ease-in-out , filter 0.3s ease-in-out;
+    overflow: hidden;
 
 }
 
 .right_img img.img_out{
 
-    scale: 0.9;
+    scale: 0.95;
     filter: blur(10px);
 
 }
