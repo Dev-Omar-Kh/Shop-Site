@@ -94,8 +94,8 @@ export default function Slider(){
 
             <div className={sliderCss.right_img}>
 
-                <img className={fade ? sliderCss.img_out : sliderCss.img_in} src={images[(count + 1) % 3]} alt="" />
-                <img className={fade ? sliderCss.img_out : sliderCss.img_in} src={images[(count + 2) % 3]} alt="" />
+                <div className={sliderCss.right_img_cont}><img className={fade ? sliderCss.img_out : sliderCss.img_in} src={images[(count + 1) % 3]} alt="" /></div>
+                <div className={sliderCss.right_img_cont}><img className={fade ? sliderCss.img_out : sliderCss.img_in} src={images[(count + 2) % 3]} alt="" /></div>
 
             </div>
 

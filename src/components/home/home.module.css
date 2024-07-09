@@ -1,0 +1,9 @@
+.cate_cont{
+
+    width: 100%;
+    padding: 50px 4.5%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}

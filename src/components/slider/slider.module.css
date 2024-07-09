@@ -64,6 +64,11 @@
 
     width: 100%;
     height: 100%;
+    background-image: url(../../images/logo-dark.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 30%;
+    background-color: var(--dark-color);
 
 }
 
@@ -71,23 +76,25 @@
 
     width: 100%;
     height: 100%;
+    opacity: 1;
     scale: 1;
     filter: blur(0px);
     object-fit: cover;
-    transition: 0.3s;
-    transition: scale 0.3s ease-in-out, filter 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out , scale 0.3s ease-in-out, filter 0.3s ease-in-out;
 
 }
 
 .slide_scroll img.fade {
 
-    scale: 1.05;
+    opacity: 0;
+    scale: 0.95;
     filter: blur(10px);
 
 }
 
 .slide_scroll img.fade_in {
 
+    opacity: 1;
     scale: 1;
     filter: blur(0px);
 
@@ -104,21 +111,35 @@
 
 }
 
-.right_img img{
+.right_img_cont{
 
     width: 100%;
     height: calc(50% - 5px);
+    border-radius: 5px;
+    background-image: url(../../images/logo-dark.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 30%;
+    background-color: var(--dark-color);    
+    overflow: hidden;
+
+}
+
+.right_img_cont img{
+
+    width: 100%;
+    height: 100%;
+    opacity: 1;
     scale: 1;
     filter: blur(0px);
-    border-radius: 5px;
     object-fit: cover;
-    transition: scale 0.3s ease-in-out , filter 0.3s ease-in-out;
-    overflow: hidden;
+    transition: opacity 0.3s ease-in-out , scale 0.3s ease-in-out , filter 0.3s ease-in-out;
 
 }
 
 .right_img img.img_out{
 
+    opacity: 0;
     scale: 0.95;
     filter: blur(10px);
 
@@ -126,6 +147,7 @@
 
 .right_img img.img_in{
 
+    opacity: 1;
     scale: 1;
     filter: blur(0px);
 
