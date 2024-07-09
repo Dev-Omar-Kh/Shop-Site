@@ -1,6 +1,7 @@
 .container{
 
-    width: calc(100% - 9%);
+    position: relative;
+    width: calc(75% - 9%);
     height: 500px;
     margin: 50px 4.5%;
     display: flex;
@@ -8,5 +9,81 @@
     border-radius: 5px;
     justify-content: center;
     overflow: hidden;
+    /* background-image: url(../../images/first_slide.png);
+    background-repeat: no-repeat;
+    background-size: 100%; */
+
+}
+
+.arrows{
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: var(--darker-color);
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+
+}
+
+.arrows:hover{
+
+    background-color: var(--dark-color-02);
+
+}
+
+.arrows:nth-child(1){
+
+    left: 10px;
+
+}
+
+.arrows:nth-child(3){
+
+    right: 10px;
+
+}
+
+.slide_scroll{
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.slide_scroll img{
+
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    filter: blur(0px);
+    object-fit: cover;
+    transition: 0.3s;
+    transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+
+}
+
+.slide_scroll img.fade {
+
+    opacity: 0;
+    filter: blur(10px);
+    /* transition: opacity 0.5s ease-in-out; */
+
+}
+
+.slide_scroll img.fade_in {
+
+    opacity: 1;
+    filter: blur(0px);
+    /* transition: opacity 0.5s ease-in-out; */
 
 }
