@@ -28,9 +28,9 @@ export default function Slider(){
                 setCount((count + 1) % 3);
                 setFade(false);
 
-            }, 500);
+            }, 300);
 
-        }, 5000);
+        }, 8000);
 
         return () => clearInterval(interval);
 
@@ -49,7 +49,7 @@ export default function Slider(){
                 setFade(false);
                 setManualChange(false);
 
-            }, 500);
+            }, 300);
 
         }
 
@@ -68,7 +68,7 @@ export default function Slider(){
                 setFade(false);
                 setManualChange(false);
 
-            }, 500);
+            }, 300);
 
         }
 

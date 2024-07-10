@@ -1,20 +1,16 @@
 import React from 'react';
 
-import cateCss from './cateCard.module.css';
+import cCard from '../home/home.module.css';
 
-export default function CateCard(){
+export default function CateCard({data}) {
 
     return <React.Fragment>
 
-        <div className={cateCss.card}>
+        <div id='card' className={cCard.card}>
 
-            <img src={require('../../images/success-1.jpg')} alt="" />
+            <img src={data.image} alt="" />
 
-            <div className={cateCss.det}>
-
-                <span className={cateCss.name}>Category</span>
-
-            </div>
+            <p>{data.name}</p>
 
         </div>
 
