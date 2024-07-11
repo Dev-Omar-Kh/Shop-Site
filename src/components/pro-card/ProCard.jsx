@@ -1,6 +1,9 @@
 import React from 'react';
 
 import productsCss from '../products/products.module.css'
+import { Link } from 'react-router-dom';
+
+import cart from '../../images/icons/cart-icon.svg'
 
 export default function ProCard({data}){
 
@@ -24,23 +27,29 @@ export default function ProCard({data}){
 
     return <React.Fragment>
     
-        <div className={productsCss.card}>
+        <div  className={productsCss.card}>
 
-            <img src={data.imageCover} alt="" />
+            <Link to={`/proDet/${data.id}`}>
 
-            <div className={productsCss.det}>
+                <img src={data.imageCover} alt="" />
 
-                <span className={productsCss.cate}>{data.category.name}</span>
-                <span className={productsCss.name}>{name}</span>
+                <div className={productsCss.det}>
 
-            </div>
+                    <span className={productsCss.cate}>{data.category.name}</span>
+                    <span className={productsCss.name}>{name}</span>
 
-            <div className={productsCss.price_rate}>
+                </div>
 
-                <span className={productsCss.price}>{data.price} EGP</span>
-                <span className={productsCss.rate}><i className="fa-solid fa-star"></i> {data.ratingsAverage}</span>
+                <div className={productsCss.price_rate}>
 
-            </div>
+                    <span className={productsCss.price}>{data.price} EGP</span>
+                    <span className={productsCss.rate}><i className="fa-solid fa-star"></i> {data.ratingsAverage}</span>
+
+                </div>
+
+            </Link>
+
+            <button className={productsCss.add_card}><img src={cart} alt="add" /></button>
 
         </div>
 

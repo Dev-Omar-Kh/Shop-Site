@@ -45,6 +45,12 @@ export default function Home() {
 
         <section className={homeCss.categories_container}>
 
+            <div className={homeCss.title}>
+
+                <p>Category</p>
+
+            </div>
+
             <div id='parent' className={homeCss.cate_cont}>
 
                 <div id='cate_scroll' className={homeCss.cate_scroll}>

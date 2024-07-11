@@ -14,6 +14,7 @@ import AuthProvider from './contexts/authentication';
 import Home from './components/home/Home';
 import Profile from './components/profile/Profile';
 import ProtectedRoutes from './components/protect-routes/ProtectedRoutes';
+import ProductDetails from './components/product-det/ProductDetails';
 
 const router = createBrowserRouter([
 
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
         ]},
 
         {path : 'profile' , element : <ProtectedRoutes> <Profile /> </ProtectedRoutes>},
+        {path : '/proDet/:id' , element : <ProductDetails />},
 
         {path : '*' , element : <Error />},
 

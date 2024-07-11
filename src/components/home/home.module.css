@@ -4,8 +4,26 @@
     padding: 0px 4.5%;
 
 }
+
+.title {
+
+    padding: 10px 0px;
+
+}
+
+.title p {
+
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 57.6px;
+    text-transform: uppercase;
+    color: var(--darker-color);
+
+}
+
 .cate_cont{
 
+    position: relative;
     width: 100%;
     padding: 0px 4.5%;
     overflow: hidden;
@@ -80,5 +98,17 @@
     line-height: 27.6px;
     text-align: center;
     color: var(--darker-color);
+
+}
+
+/* ====== responsive-style ====== */
+
+@media(max-width: 400px){
+
+    .title p {
+    
+        font-size: 30px !important;
+
+    }
 
 }

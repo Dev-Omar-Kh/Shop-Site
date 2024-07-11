@@ -1,0 +1,145 @@
+.slider_container{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+}
+
+.container{
+
+    position: relative;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: center;
+    overflow: hidden;
+
+}
+
+.arrows{
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--darker-color);
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+
+}
+
+.arrows:hover{
+
+    background-color: var(--dark-color-02);
+
+}
+
+.arrows:nth-child(1){
+
+    left: 10px;
+
+}
+
+.arrows:nth-child(3){
+
+    right: 10px;
+
+}
+
+.slide_scroll{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.slide_scroll img{
+
+    height: 100%;
+    opacity: 1;
+    scale: 1;
+    filter: blur(0px);
+    object-fit: cover;
+    transition: opacity 0.6s ease-in-out , scale 0.6s ease-in-out, filter 0.6s ease-in-out;
+
+}
+
+.slide_scroll img.fade {
+
+    opacity: 0;
+    filter: blur(10px);
+
+}
+
+.slide_scroll img.fade_in {
+
+    opacity: 1;
+    scale: 1;
+    filter: blur(0px);
+
+}
+
+.right_img{
+
+    width: 100%;
+    height: 150px;
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+
+}
+
+.right_img_cont{
+
+    width: calc(50% - 5px);
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+}
+
+.right_img_cont img{
+
+    height: 100%;
+    opacity: 1;
+    scale: 1;
+    filter: blur(0px);
+    object-fit: cover;
+    transition: opacity 0.6s ease-in-out , scale 0.6s ease-in-out , filter 0.6s ease-in-out;
+
+}
+
+.right_img img.img_out{
+
+    opacity: 0;
+    filter: blur(10px);
+
+}
+
+.right_img img.img_in{
+
+    opacity: 1;
+    scale: 1;
+    filter: blur(0px);
+
+}
