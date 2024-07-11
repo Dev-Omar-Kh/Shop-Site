@@ -39,19 +39,19 @@ export default function CateSlider() {
 
             <div id='parent' className={cateSliderCss.cate_cont}>
 
-                <div id='cate_scroll' className={cateSliderCss.cate_scroll}>
+                {isLoading ? <div className={'load_cont'}>
+                
+                    <Loading flex={'nowrap'} count={10} wd={'200px'} hg={'250px'} />
 
-                    {isLoading ? <div className={'load_cont'}>
-                    
-                        <Loading flex={'nowrap'} count={10} wd={'200px'} hg={'250px'} />
+                </div> : <div id='cate_scroll' className={cateSliderCss.cate_scroll}>
 
-                    </div> : <div className={cateSliderCss.scroll_cont}>
+                    <div className={cateSliderCss.scroll_cont}>
 
                         {data?.data.data.map((cate , idx) => {return <CateCard key={idx} data = {cate} />})}
 
-                    </div>}
+                    </div>
 
-                </div>
+                </div> }
 
             </div>
 

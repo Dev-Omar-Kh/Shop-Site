@@ -35,7 +35,7 @@
 .cate_scroll {
 
     display: inline-block;
-    animation: scroll 40s linear infinite;
+    animation: scroll 10s linear infinite;
 
 }
 

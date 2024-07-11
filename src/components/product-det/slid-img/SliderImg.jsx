@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import sliderImgCss from './sliderImg.module.css';
 
-export default function SliderImg({imgs , title}){
+export default function SliderImg({imgs=require('../../../images/notFound.jpg') , title}){
 
     const [count, setCount] = useState(0);
     const [fade, setFade] = useState(false);
