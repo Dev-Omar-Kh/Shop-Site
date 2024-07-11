@@ -49,3 +49,13 @@
   padding-top: 71px;
 
 }
+
+/* ====== load-container ====== */
+
+.load_cont {
+
+  width: 100%;
+  display: flex;
+  gap: 20px;
+
+}

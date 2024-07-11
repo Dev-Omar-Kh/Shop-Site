@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import sliderImgCss from './sliderImg.module.css';
 
-export default function SliderImg({imgs}){
+export default function SliderImg({imgs , title}){
 
-    
     const [count, setCount] = useState(0);
     const [fade, setFade] = useState(false);
     const [manualChange, setManualChange] = useState(false);
@@ -80,7 +79,7 @@ export default function SliderImg({imgs}){
 
                 <div className={sliderImgCss.slide_scroll}>
 
-                    <img id='images' className={fade ? sliderImgCss.fade : sliderImgCss.fade_in} src={images[count]} alt="sliders" />
+                    <img id='images' className={fade ? sliderImgCss.fade : sliderImgCss.fade_in} src={images[count]} alt={title} />
 
                 </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import cCard from '../home/home.module.css';
+import cCard from '../cate-slider/cateSlider.module.css';
 
 export default function CateCard({data}) {
 

@@ -20,37 +20,11 @@ export default function Products() {
 
     });
 
-    // const [allProducts, setAllProducts] = useState(null)
+    // if(isLoading){
 
-    // async function getAllProducts(){
-
-    //     try{
-
-    //         const {data} = await axios.get('https://ecommerce.routemisr.com/api/v1/products');
-
-    //         // console.log(data.data);
-    //         setAllProducts(data.data);
-
-    //     }
-    //     catch(err){
-
-    //         console.log(err.message);
-
-    //     }
+    //     return <Loading />
 
     // }
-
-    // useEffect(() => {
-
-    //     getAllProducts()
-
-    // } , []);
-
-    if(isLoading){
-
-        return <Loading />
-
-    }
 
     return <React.Fragment>
 
@@ -68,7 +42,7 @@ export default function Products() {
 
             <div className={productsCss.cards_cont}>
 
-                {data?.data.data.map((product , idx) => { return <ProCard key={idx} data={product} />})}
+                {isLoading ? <Loading flex={'wrap'} count={3} wd={'250px'} hg={'350px'} /> : <>{data?.data.data.map((product , idx) => { return <ProCard key={idx} data={product} />})}</>}
 
             </div>
 
