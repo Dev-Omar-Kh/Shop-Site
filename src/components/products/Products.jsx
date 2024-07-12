@@ -10,7 +10,16 @@ export default function Products() {
 
     const getAllProducts = () => {
 
-        return axios.get('https://ecommerce.routemisr.com/api/v1/products');
+        return axios.get('https://ecommerce.routemisr.com/api/v1/products' , {
+
+            params : {
+
+                sort : '-price',
+                limit : '50'
+
+            }
+
+        });
 
     }
 

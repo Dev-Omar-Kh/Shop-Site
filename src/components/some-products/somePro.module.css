@@ -1,0 +1,32 @@
+.container{
+
+    width: 100%;
+    padding: 50px 4.5%;
+    /* background-color: blue; */
+
+}
+
+.title{
+
+    padding-bottom: 40px;
+
+}
+
+.title p{
+
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 57.6px;
+    text-transform: uppercase;
+    color: var(--darker-color);
+
+}
+
+.cards_cont{
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}

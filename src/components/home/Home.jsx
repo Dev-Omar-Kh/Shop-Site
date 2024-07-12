@@ -2,6 +2,7 @@ import React from 'react';
 
 import Slider from '../slider/Slider';
 import CateSlider from '../cate-slider/CateSlider';
+import SomeProducts from '../some-products/SomeProducts';
 
 
 export default function Home() {
@@ -11,6 +12,8 @@ export default function Home() {
         <Slider />
 
         <CateSlider />
+
+        <SomeProducts />
 
     </React.Fragment>
 

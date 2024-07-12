@@ -2,6 +2,7 @@
 
     width: 100%;
     padding: 0px 4.5%;
+    /* margin-bottom: 50px; */
 
 }
 
@@ -35,7 +36,7 @@
 .cate_scroll {
 
     display: inline-block;
-    animation: scroll 10s linear infinite;
+    animation: scroll 40s linear infinite;
 
 }
 
@@ -49,7 +50,7 @@
 .scroll_cont {
 
     width: 2180px;
-    padding: 10px 0px;
+    padding: 20px 0px;
     display: flex;
     gap: 20px;
 
