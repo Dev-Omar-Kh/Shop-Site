@@ -6,13 +6,13 @@ export default function LoadingCard({wd , hg}) {
 
     return <React.Fragment>
 
-        <div class={loadingCss.loader}>
+        <div className={loadingCss.loader}>
 
-            <div style={{width : wd}} class={loadingCss.wrapper}>
+            <div style={{width : wd}} className={loadingCss.wrapper}>
 
-                <div style={{height : hg}} class={loadingCss.circle}></div>
-                <div class={loadingCss.line_1}></div>
-                <div class={loadingCss.line_2}></div>
+                <div style={{height : hg}} className={loadingCss.circle}></div>
+                <div className={loadingCss.line_1}></div>
+                <div className={loadingCss.line_2}></div>
 
             </div>
 

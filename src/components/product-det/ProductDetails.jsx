@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import SliderImg from './slid-img/SliderImg';
 import axios from 'axios';
 import { useQuery } from 'react-query';
@@ -8,6 +8,8 @@ import detCss from './proDet.module.css';
 
 import cart from '../../images/icons/cart-icon-light.svg'
 import { ThreeCircles } from 'react-loader-spinner';
+import { cartContext } from '../../contexts/cartContext';
+import Status from '../status/Status';
 
 export default function ProductDetails() {
 
@@ -21,25 +23,56 @@ export default function ProductDetails() {
 
     const {data , isLoading} = useQuery('ProductDetails' , getProductDetails);
 
-    const [counter, setCounter] = useState(0);
+    const [success, setSuccess] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
 
-    const plusCounter = () => {
+    const {addToCard} = useContext(cartContext)
 
-        setCounter(counter + 1);
+    const sendToCard = async (id) => {
 
-    }
+        const res = await addToCard(id);
 
-    const minusCounter = () => {
+        if(res.status === 'success'){
 
-        if(counter > 0){
+            setSuccess('Product added to cart');
 
-            setCounter(counter - 1);
+        }
+        else{
+
+            setErrorMsg('Product not added to cart');
 
         }
 
     }
 
+    const [visible, setVisible] = useState(true);
+
+    useEffect(() => {
+
+        if(errorMsg || success){
+
+            const timer = setTimeout(() => {
+
+                setVisible(false);
+
+            }, 3000);
+
+            return () => {
+
+                clearTimeout(timer);
+
+                setVisible(true);
+
+            };
+
+        }
+
+    }, [errorMsg , success]);
+
     return <React.Fragment>
+
+        {success && visible ? <Status img = {'success'} msg = {success} /> : ''}
+        {errorMsg && visible ? <Status img = {'error'} msg = {errorMsg} /> : ''}
 
         <div className={detCss.container}>
 
@@ -79,15 +112,7 @@ export default function ProductDetails() {
 
                     </div>
 
-                    <div className={detCss.count}>
-
-                        <span onClick={plusCounter} className={detCss.operation}><i className="fa-solid fa-plus"></i></span>
-                        <span  className={detCss.counter}> {counter} </span>
-                        <span onClick={minusCounter} className={detCss.operation}><i className="fa-solid fa-minus"></i></span>
-
-                    </div>
-
-                    <button className={detCss.add_cart}> <img src={cart} alt="" /> + Add To Cart</button>
+                    <button onClick={() => sendToCard(data.data.data.id)} className={detCss.add_cart}> <img src={cart} alt="" /> + Add To Cart</button>
 
                 </div>
 

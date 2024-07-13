@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import productsCss from '../products/products.module.css'
 import { Link } from 'react-router-dom';
 
 import cart from '../../images/icons/cart-icon.svg'
+import { cartContext } from '../../contexts/cartContext';
+import Status from '../status/Status';
 
 export default function ProCard({data}){
 
@@ -23,10 +25,59 @@ export default function ProCard({data}){
 
     const name = nameSpace.join(' ');
 
-    // ====== ======
+    // ====== add-to-card ======
+
+    const [success, setSuccess] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+
+    const {addToCard} = useContext(cartContext)
+
+    const addProductToCard = async (id) => {
+
+        const res = await addToCard(id);
+
+        if(res.status === 'success'){
+
+            setSuccess('Product added to cart');
+
+        }
+        else{
+
+            setErrorMsg('Product not added to cart');
+
+        }
+
+    }
+
+    const [visible, setVisible] = useState(true);
+
+    useEffect(() => {
+
+        if(errorMsg || success){
+
+            const timer = setTimeout(() => {
+
+                setVisible(false);
+
+            }, 3000);
+
+            return () => {
+
+                clearTimeout(timer);
+
+                setVisible(true);
+
+            };
+
+        }
+
+    }, [errorMsg , success]);
 
     return <React.Fragment>
-    
+
+        {success && visible ? <Status img = {'success'} msg = {success} /> : ''}
+        {errorMsg && visible ? <Status img = {'error'} msg = {errorMsg} /> : ''}
+
         <div  className={productsCss.card}>
 
             <Link to={`/proDet/${data.id}`}>
@@ -49,7 +100,7 @@ export default function ProCard({data}){
 
             </Link>
 
-            <button className={productsCss.add_card}><img src={cart} alt="add" /></button>
+            <button onClick={() => addProductToCard(data.id)} className={productsCss.add_card}><img src={cart} alt="add" /></button>
 
         </div>
 

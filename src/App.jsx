@@ -15,6 +15,8 @@ import Home from './components/home/Home';
 import Profile from './components/profile/Profile';
 import ProtectedRoutes from './components/protect-routes/ProtectedRoutes';
 import ProductDetails from './components/product-det/ProductDetails';
+import Cart from './components/cart/Cart';
+import CartContextProvider from './contexts/cartContext';
 
 const router = createBrowserRouter([
 
@@ -32,6 +34,7 @@ const router = createBrowserRouter([
         ]},
 
         {path : 'profile' , element : <ProtectedRoutes> <Profile /> </ProtectedRoutes>},
+        {path : 'cart' , element : <> <Cart /> </>},
         {path : '/proDet/:id' , element : <ProductDetails />},
 
         {path : '*' , element : <Error />},
@@ -47,9 +50,11 @@ export default function App() {
     return <React.Fragment>
 
         <QueryClientProvider client={clientQuery}>
-            <AuthProvider>
-                <RouterProvider router={router} />
-            </AuthProvider>
+            <CartContextProvider>
+                <AuthProvider>
+                    <RouterProvider router={router} />
+                </AuthProvider>
+            </CartContextProvider>
         </QueryClientProvider>
 
     </React.Fragment>

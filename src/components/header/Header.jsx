@@ -110,7 +110,7 @@ export default function Header() {
 
                 </NavLink>
 
-                <NavLink id='cart' to={token ? '/cart' : '/error'} className={headerCss.cart_icon}>
+                <NavLink id='cart' to={'/cart'} className={headerCss.cart_icon}>
 
                     <img className={headerCss.icon} src={cart} alt="profile" />
                     <p>Cart</p>
