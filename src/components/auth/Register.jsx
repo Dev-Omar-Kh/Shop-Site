@@ -137,6 +137,7 @@ export default function Register() {
     // ====== display-component ======
 
     const [visible, setVisible] = useState(true);
+    const [visibility, setVisibility] = useState(true);
 
     useEffect(() => {
 
@@ -145,6 +146,7 @@ export default function Register() {
             const timer = setTimeout(() => {
 
                 setVisible(false);
+                setVisibility(false);
 
             }, 3000);
 
@@ -153,6 +155,7 @@ export default function Register() {
                 clearTimeout(timer);
 
                 setVisible(true);
+                setVisibility(true);
 
             };
 
@@ -162,8 +165,8 @@ export default function Register() {
 
     return <React.Fragment>
 
-        {success ? <Status img = {'success'} msg = {success} /> : ''}
-        {errorMsg && visible ? <Status img = {'error'} msg = {errorMsg} /> : ''}
+        {success ? <Status display={visibility} img = {'success'} msg = {success} /> : ''}
+        {errorMsg && visible ? <Status display={visibility} img = {'error'} msg = {errorMsg} /> : ''}
 
         <div className={authCss.auth_cont}>
 

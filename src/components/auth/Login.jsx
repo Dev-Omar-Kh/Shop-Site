@@ -116,6 +116,7 @@ export default function Login() {
     // ====== display-error-msg ======
 
     const [displayErrorMsg, setDisplayErrorMsg] = useState(true);
+    const [visibility, setVisibility] = useState(true);
 
     useEffect(() => {
 
@@ -124,6 +125,7 @@ export default function Login() {
             const timer = setTimeout(() => {
 
                 setDisplayErrorMsg(false);
+                setVisibility(false);
 
             }, 3000);
 
@@ -132,6 +134,7 @@ export default function Login() {
                 clearTimeout(timer);
 
                 setDisplayErrorMsg(true);
+                setVisibility(true);
 
             };
 
@@ -142,8 +145,8 @@ export default function Login() {
 
     return <React.Fragment>
 
-        {successMsg ? <Status img = {'success'} msg = {successMsg} /> : ''}
-        {errorMsg && displayErrorMsg ? <Status img = {'error'} msg = {errorMsg} /> : ''}
+        {successMsg ? <Status display={visibility} img = {'success'} msg = {successMsg} /> : ''}
+        {errorMsg && displayErrorMsg ? <Status display={visibility} img = {'error'} msg = {errorMsg} /> : ''}
 
         <div className={authCss.auth_cont}>
 

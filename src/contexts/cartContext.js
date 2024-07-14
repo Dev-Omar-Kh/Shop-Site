@@ -28,7 +28,7 @@ export default function CartContextProvider({children}) {
         }
         catch(err){
 
-            console.log(err);
+            return err;
 
         }
 

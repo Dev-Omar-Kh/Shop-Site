@@ -50,6 +50,7 @@ export default function ProCard({data}){
     }
 
     const [visible, setVisible] = useState(true);
+    const [visibility, setVisibility] = useState(true);
 
     useEffect(() => {
 
@@ -58,6 +59,10 @@ export default function ProCard({data}){
             const timer = setTimeout(() => {
 
                 setVisible(false);
+                setVisibility(false);
+
+                setSuccess(null);
+                setErrorMsg(null);
 
             }, 3000);
 
@@ -66,6 +71,7 @@ export default function ProCard({data}){
                 clearTimeout(timer);
 
                 setVisible(true);
+                setVisibility(true);
 
             };
 
@@ -75,8 +81,8 @@ export default function ProCard({data}){
 
     return <React.Fragment>
 
-        {success && visible ? <Status img = {'success'} msg = {success} /> : ''}
-        {errorMsg && visible ? <Status img = {'error'} msg = {errorMsg} /> : ''}
+        {success && visible ? <Status display={visibility} img = {'success'} msg = {success} /> : ''}
+        {errorMsg && visible ? <Status display={visibility} img = {'error'} msg = {errorMsg} /> : ''}
 
         <div  className={productsCss.card}>
 

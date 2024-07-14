@@ -37,6 +37,7 @@
 
     width: 100%;
     display: flex;
+    margin-bottom: 20px;
     flex-direction: column;
     gap: 20px;
 
@@ -58,10 +59,10 @@
 .delete_card{
 
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,9 +73,10 @@
 
 }
 
-.delete_card img {
+.delete_card i {
 
-    width: 20px;
+    font-size: 18px;
+    color: var(--darker-color);
 
 }
 
@@ -155,6 +157,29 @@
     font-size: 16px;
     color: var(--dark-color);
     cursor: pointer;
+
+}
+
+.total_price{
+
+    width: 100%;
+    padding: 0px 20px;
+    padding-top: 30px;
+
+}
+
+.total_price p{
+
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 27.6px;
+    color: var(--dark-color);
+
+}
+
+.total_price p span{
+
+    color: var(--darker-color);
 
 }
 
@@ -253,6 +278,12 @@
     .card{
 
         width: 100% !important;
+
+    }
+
+    .total_price p{
+
+        font-size: 18px !important;
 
     }
 

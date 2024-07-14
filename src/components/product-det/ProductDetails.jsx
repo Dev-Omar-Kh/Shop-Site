@@ -34,18 +34,20 @@ export default function ProductDetails() {
 
         if(res.status === 'success'){
 
-            setSuccess('Product added to cart');
+            setSuccess(res.message);
+            console.log(res.message);
 
         }
         else{
 
-            setErrorMsg('Product not added to cart');
+            setErrorMsg(res.response.data.message);
 
         }
 
     }
 
     const [visible, setVisible] = useState(true);
+    const [visibility, setVisibility] = useState(true);
 
     useEffect(() => {
 
@@ -54,6 +56,10 @@ export default function ProductDetails() {
             const timer = setTimeout(() => {
 
                 setVisible(false);
+                setVisibility(false);
+
+                setSuccess(null);
+                setErrorMsg(null);  
 
             }, 3000);
 
@@ -62,6 +68,7 @@ export default function ProductDetails() {
                 clearTimeout(timer);
 
                 setVisible(true);
+                setVisibility(true);
 
             };
 
@@ -71,8 +78,8 @@ export default function ProductDetails() {
 
     return <React.Fragment>
 
-        {success && visible ? <Status img = {'success'} msg = {success} /> : ''}
-        {errorMsg && visible ? <Status img = {'error'} msg = {errorMsg} /> : ''}
+        {success && visible ? <Status display={visibility} img = {'success'} msg = {success} /> : ''}
+        {errorMsg && visible ? <Status display={visibility} img = {'error'} msg = {errorMsg} /> : ''}
 
         <div className={detCss.container}>
 

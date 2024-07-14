@@ -2,10 +2,28 @@ import React from 'react';
 
 import cartCss from './cart.module.css';
 import { Link } from 'react-router-dom';
-
-import cart from '../../images/icons/cart-icon.svg';
+import CartCard from './CartCard';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import { ThreeCircles } from 'react-loader-spinner';
 
 export default function Cart() {
+
+    const getCartItems = () => {
+
+        return axios.get('https://ecommerce.routemisr.com/api/v1/cart' , {
+
+            headers : {
+
+                token : localStorage.getItem('auth_token')
+
+            }
+
+        })
+
+    }
+
+    const {data , isLoading} = useQuery('cartItems' , getCartItems);
 
     return <React.Fragment>
 
@@ -19,155 +37,28 @@ export default function Cart() {
 
             </div>
 
-            <div className={cartCss.cards_cont}>
+            {isLoading ? <div 
+                style={{width : '100%' , height : '400px' , display : 'flex' , alignItems : 'center' , justifyContent : 'center'}}
+            >
 
-                <div className={cartCss.card}>
+                <ThreeCircles
 
-                    <button className={cartCss.delete_card}><img src={cart} alt="add" /></button>
+                    visible={true} height="80" width="80" color="var(--dark-color)" 
+                    ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
 
-                    <div className={cartCss.img}>
+                />
 
-                        <img src={require('../../images/test.jpg')} alt="" />
+            </div> : <><div className={cartCss.cards_cont}>
 
-                    </div>
-
-                    <div className={cartCss.det}>
-
-                        <h3>Victus 16-D1016Ne Laptop With 16-Inch Display Core I7-12700H Processor 16Gb Ram 1Tb Nvidia Geforce Rtx3050 Ti Graphics English/Arabic Ceramic White</h3>
-                        <p><span>Price :</span> 42690 EGP   </p>
-
-                        <div className={cartCss.count}>
-
-                            <span className={cartCss.operation}><i className="fa-solid fa-plus"></i></span>
-                            <span className={cartCss.counter}> 0 </span>
-                            <span className={cartCss.operation}><i className="fa-solid fa-minus"></i></span>
-
-                        </div>
-
-                        <p><span>Total Price : </span> 0 EGP</p>
-
-                    </div>
-
-                </div>
-
-                <div className={cartCss.card}>
-
-                    <button className={cartCss.delete_card}><img src={cart} alt="add" /></button>
-
-                    <div className={cartCss.img}>
-
-                        <img src={require('../../images/test.jpg')} alt="" />
-
-                    </div>
-
-                    <div className={cartCss.det}>
-
-                        <h3>Victus 16-D1016Ne Laptop With 16-Inch Display Core I7-12700H Processor 16Gb Ram 1Tb Nvidia Geforce Rtx3050 Ti Graphics English/Arabic Ceramic White</h3>
-                        <p><span>Price :</span> 42690 EGP   </p>
-
-                        <div className={cartCss.count}>
-
-                            <span className={cartCss.operation}><i className="fa-solid fa-plus"></i></span>
-                            <span className={cartCss.counter}> 0 </span>
-                            <span className={cartCss.operation}><i className="fa-solid fa-minus"></i></span>
-
-                        </div>
-
-                        <p><span>Total Price : </span> 0 EGP</p>
-
-                    </div>
-
-                </div>
-
-                <div className={cartCss.card}>
-
-                    <button className={cartCss.delete_card}><img src={cart} alt="add" /></button>
-
-                    <div className={cartCss.img}>
-
-                        <img src={require('../../images/test.jpg')} alt="" />
-
-                    </div>
-
-                    <div className={cartCss.det}>
-
-                        <h3>Victus 16-D1016Ne Laptop With 16-Inch Display Core I7-12700H Processor 16Gb Ram 1Tb Nvidia Geforce Rtx3050 Ti Graphics English/Arabic Ceramic White</h3>
-                        <p><span>Price :</span> 42690 EGP   </p>
-
-                        <div className={cartCss.count}>
-
-                            <span className={cartCss.operation}><i className="fa-solid fa-plus"></i></span>
-                            <span className={cartCss.counter}> 0 </span>
-                            <span className={cartCss.operation}><i className="fa-solid fa-minus"></i></span>
-
-                        </div>
-
-                        <p><span>Total Price : </span> 0 EGP</p>
-
-                    </div>
-
-                </div>
-
-                <div className={cartCss.card}>
-
-                    <button className={cartCss.delete_card}><img src={cart} alt="add" /></button>
-
-                    <div className={cartCss.img}>
-
-                        <img src={require('../../images/test.jpg')} alt="" />
-
-                    </div>
-
-                    <div className={cartCss.det}>
-
-                        <h3>Victus 16-D1016Ne Laptop With 16-Inch Display Core I7-12700H Processor 16Gb Ram 1Tb Nvidia Geforce Rtx3050 Ti Graphics English/Arabic Ceramic White</h3>
-                        <p><span>Price :</span> 42690 EGP   </p>
-
-                        <div className={cartCss.count}>
-
-                            <span className={cartCss.operation}><i className="fa-solid fa-plus"></i></span>
-                            <span className={cartCss.counter}> 0 </span>
-                            <span className={cartCss.operation}><i className="fa-solid fa-minus"></i></span>
-
-                        </div>
-
-                        <p><span>Total Price : </span> 0 EGP</p>
-
-                    </div>
-
-                </div>
-
-                <div className={cartCss.card}>
-
-                    <button className={cartCss.delete_card}><img src={cart} alt="add" /></button>
-
-                    <div className={cartCss.img}>
-
-                        <img src={require('../../images/test.jpg')} alt="" />
-
-                    </div>
-
-                    <div className={cartCss.det}>
-
-                        <h3>Victus 16-D1016Ne Laptop With 16-Inch Display Core I7-12700H Processor 16Gb Ram 1Tb Nvidia Geforce Rtx3050 Ti Graphics English/Arabic Ceramic White</h3>
-                        <p><span>Price :</span> 42690 EGP   </p>
-
-                        <div className={cartCss.count}>
-
-                            <span className={cartCss.operation}><i className="fa-solid fa-plus"></i></span>
-                            <span className={cartCss.counter}> 0 </span>
-                            <span className={cartCss.operation}><i className="fa-solid fa-minus"></i></span>
-
-                        </div>
-
-                        <p><span>Total Price : </span> 0 EGP</p>
-
-                    </div>
-
-                </div>
-
+                {data?.data.data.products.map((product , idx) => {return <CartCard key={idx} data={product} />})}
 
             </div>
+
+            <div className={cartCss.total_price}>
+
+                <p><span>SUB - TOTAL : </span> {data?.data.data.totalCartPrice} EGP</p>
+
+            </div></>}
 
         </div>
 
