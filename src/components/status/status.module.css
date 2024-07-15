@@ -19,13 +19,13 @@
 
 .display_cont{
 
-    animation: contAnimation 1s forwards;
+    animation: contAnimation 0.5s forwards;
 
 }
 
 .display_cont_out{
 
-    animation: contAnimationOut 1s forwards;
+    animation: contAnimationOut 0.5s forwards;
 
 }
 
@@ -57,7 +57,7 @@
 
 .display_msg{
 
-    animation: boxAnimation 1s forwards;
+    animation: boxAnimation 0.5s forwards;
 
 }
 

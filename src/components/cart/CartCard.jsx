@@ -1,14 +1,94 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
-import cCartCss from './cart.module.css'
+import { cartContext } from '../../contexts/cartContext';
+import Status from '../status/Status';
+import { ThreeCircles } from 'react-loader-spinner';
 
-export default function CartCard({data}) {
+import cCartCss from './cart.module.css';
+
+export default function CartCard({data , del}) {
+
+    const [success, setSuccess] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+    const [addLoading, setAddLoading] = useState(false)
+
+    const {updateProduct , deleteProduct} = useContext(cartContext);
+
+    const deletePro = async(id) => {
+
+        setAddLoading(true);
+
+        const res = await deleteProduct(id);
+
+        if(res.status === 'success'){
+
+            setSuccess('The item was deleted successfully');
+
+        }
+        else{
+
+            setErrorMsg('The item was deleted successfully');
+
+        }
+
+        setAddLoading(false);
+
+    }
+
+    const updateCart = async(id , count) => {
+
+        setAddLoading(true);
+
+        await updateProduct(id , count);
+
+        setAddLoading(false);
+
+    }
+
+    const [visible, setVisible] = useState(true);
+
+    useEffect(() => {
+
+        if(errorMsg || success){
+
+            const timer = setTimeout(() => {
+
+                setVisible(false);
+
+                setSuccess(null);
+                setErrorMsg(null);
+
+            }, 3000);
+
+            return () => {
+
+                clearTimeout(timer);
+
+                setVisible(true);
+
+            };
+
+        }
+
+    }, [errorMsg , success]);
 
     return <React.Fragment>
 
+        {success && visible ? <Status display={visible} img = {'success'} msg = {success} /> : ''}
+        {errorMsg && visible ? <Status display={visible} img = {'error'} msg = {errorMsg} /> : ''}
+
+        {addLoading ? <div className={cCartCss.loading_page}>
+            <ThreeCircles
+
+                visible={true} height="80" width="80" color="var(--light-color)" 
+                ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+
+            />
+        </div> : ''}
+
         <div className={cCartCss.card}>
 
-            <button className={cCartCss.delete_card}><i className="fa-solid fa-xmark"></i></button>
+            {del !== false ? <button onClick={() => deletePro(data.product.id)} className={cCartCss.delete_card}><i className="fa-solid fa-xmark"></i></button> : ''}
 
             <div className={cCartCss.img}>
 
@@ -23,9 +103,9 @@ export default function CartCard({data}) {
 
                 <div className={cCartCss.count}>
 
-                    <span className={cCartCss.operation}><i className="fa-solid fa-plus"></i></span>
+                    <span onClick={() => data.count > 0 ? updateCart(data.product.id , data.count + 1) : ''} className={cCartCss.operation}><i className="fa-solid fa-plus"></i></span>
                     <span className={cCartCss.counter}> {data.count} </span>
-                    <span className={cCartCss.operation}><i className="fa-solid fa-minus"></i></span>
+                    <span onClick={() => data.count > 1 ? updateCart(data.product.id , data.count - 1) : ''} className={cCartCss.operation}><i className="fa-solid fa-minus"></i></span>
 
                 </div>
 

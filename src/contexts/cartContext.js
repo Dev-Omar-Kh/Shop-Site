@@ -1,9 +1,13 @@
 import axios from "axios";
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const cartContext = createContext();
 
 export default function CartContextProvider({children}) {
+
+    const [cardItems, setCardItems] = useState(0);
+    const [cartTotalCount, setCartTotalCount] = useState(0);
+    const [cartProducts, setCartProducts] = useState(null);
 
     const addToCard = async (proId) => {
 
@@ -23,6 +27,11 @@ export default function CartContextProvider({children}) {
 
             });
 
+            // setCardItems(data.numOfCartItems);
+            // setCartTotalCount(data.data.totalCartPrice);
+
+            getUserCard();
+
             return data ;
 
         }
@@ -34,7 +43,123 @@ export default function CartContextProvider({children}) {
 
     };
 
-    return <cartContext.Provider value={{addToCard}}>
+    const getUserCard = async () => {
+
+        try {
+
+            const {data} = await axios.get('https://ecommerce.routemisr.com/api/v1/cart' , {
+
+                headers : {
+
+                    token : localStorage.getItem('auth_token')
+
+                }
+
+            })
+
+            setCardItems(data.numOfCartItems);
+            setCartTotalCount(data.data.totalCartPrice);
+            setCartProducts(data.data.products);
+
+            return data ;
+
+        } 
+        catch (err) {
+
+            return err;
+
+        }
+
+    };
+
+    const deleteProduct = async(proId) => {
+
+        try {
+
+            const {data} = await axios.delete(`https://ecommerce.routemisr.com/api/v1/cart/${proId}` , {
+
+                headers : {token : localStorage.getItem('auth_token')}
+
+            });
+
+            setCardItems(data.numOfCartItems);
+            setCartTotalCount(data.data.totalCartPrice);
+            setCartProducts(data.data.products);
+
+            return data;
+
+        } catch (err) {
+
+            console.log(err);
+
+        }
+
+    }
+
+        const deleteAllProduct = async () => {
+
+        try {
+
+            const {data} = await axios.delete('https://ecommerce.routemisr.com/api/v1/cart' , {
+
+                headers : {
+
+                    token : localStorage.getItem('auth_token')
+
+                }
+
+            })
+
+            setCardItems(0);
+            setCartTotalCount(0);
+            setCartProducts([]);
+
+            return data;
+
+        } 
+        catch (err) {
+
+            return err;
+
+        }
+
+    };
+
+    const updateProduct = async(proId , count) => {
+
+        try {
+
+            const {data} = await axios.put(`https://ecommerce.routemisr.com/api/v1/cart/${proId}` , {
+
+                "count" : count
+
+            } , {
+
+                headers : {token : localStorage.getItem('auth_token')}
+
+            });
+
+            setCardItems(data.numOfCartItems);
+            setCartTotalCount(data.data.totalCartPrice);
+            setCartProducts(data.data.products);
+
+            return data;
+
+        } catch (error) {
+            
+            console.log(error);
+
+        }
+
+    }
+
+    useEffect(() => {
+
+        getUserCard();
+
+    });
+
+    return <cartContext.Provider value={{addToCard , cardItems , cartProducts , setCartProducts , cartTotalCount , getUserCard , deleteProduct , updateProduct , deleteAllProduct}}>
 
         {children}
 

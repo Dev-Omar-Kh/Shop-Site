@@ -7,8 +7,11 @@ import './active.css'
 import profile from '../../images/icons/profile-icon.svg';
 import cart from '../../images/icons/cart-icon.svg';
 import { authContext } from '../../contexts/authentication';
+import { cartContext } from '../../contexts/cartContext';
 
 export default function Header() {
+
+    const {cardItems} = useContext(cartContext);
 
     const {token} = useContext(authContext);
 
@@ -20,6 +23,18 @@ export default function Header() {
         const nav = document.getElementById('nav');
         const profile = document.getElementById('prof');
         const cart = document.getElementById('cart');
+        const cartNote = document.getElementById('nav_note')
+
+        const displayCardNote = ( visibility , opacity ) => {
+
+            if(cardItems > 0){
+
+                cartNote.style.visibility = visibility;
+                cartNote.style.opacity = opacity;
+
+            }
+
+        }
 
         nav_ph.onclick = () => {
 
@@ -32,6 +47,11 @@ export default function Header() {
                 cart.classList.add(headerCss.display_icon_cart);
                 nav_ph.classList.add(headerCss.change);
 
+                // cartNote.style.visibility = 'hidden';
+                // cartNote.style.opacity = '0';
+
+                displayCardNote('hidden' , '0');
+
             }
             else{
 
@@ -39,6 +59,8 @@ export default function Header() {
                 profile.classList.remove(headerCss.display_icon_pro);
                 cart.classList.remove(headerCss.display_icon_cart);
                 nav_ph.classList.remove(headerCss.change);
+
+                displayCardNote('visible' , '1');
 
             }
 
@@ -51,6 +73,9 @@ export default function Header() {
             profile.classList.remove(headerCss.display_icon_pro);
             cart.classList.remove(headerCss.display_icon_cart);
             nav_ph.classList.remove(headerCss.change);
+
+            displayCardNote('visible' , '1');
+
             setCount(0);
 
         }
@@ -61,6 +86,9 @@ export default function Header() {
             profile.classList.remove(headerCss.display_icon_pro);
             cart.classList.remove(headerCss.display_icon_cart);
             nav_ph.classList.remove(headerCss.change);
+
+            displayCardNote('visible' , '1');
+
             setCount(0);
 
         }
@@ -71,11 +99,14 @@ export default function Header() {
             profile.classList.remove(headerCss.display_icon_pro);
             cart.classList.remove(headerCss.display_icon_cart);
             nav_ph.classList.remove(headerCss.change);
+
+            displayCardNote('visible' , '1');
+
             setCount(0);
 
         }
 
-    }, [count])
+    });
 
 
     return <React.Fragment>
@@ -112,6 +143,8 @@ export default function Header() {
 
                 <NavLink id='cart' to={'/cart'} className={headerCss.cart_icon}>
 
+                    {cardItems > 0 ? <span className={headerCss.notification}>{cardItems}</span> : ''}
+
                     <img className={headerCss.icon} src={cart} alt="profile" />
                     <p>Cart</p>
 
@@ -122,6 +155,8 @@ export default function Header() {
                     <span className={headerCss.nav_span}></span>
                     <span className={headerCss.nav_span}></span>
                     <span className={headerCss.nav_span}></span>
+
+                    {cardItems > 0 ? <span id='nav_note' className={headerCss.notification}>{cardItems}</span> : ''}
 
                 </div>
 

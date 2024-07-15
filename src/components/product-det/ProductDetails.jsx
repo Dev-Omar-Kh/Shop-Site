@@ -23,12 +23,17 @@ export default function ProductDetails() {
 
     const {data , isLoading} = useQuery('ProductDetails' , getProductDetails);
 
+    // ====== Add-to-cart ======
+
     const [success, setSuccess] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [addLoading, setAddLoading] = useState(false);
 
     const {addToCard} = useContext(cartContext)
 
     const sendToCard = async (id) => {
+
+        setAddLoading(true)
 
         const res = await addToCard(id);
 
@@ -43,6 +48,8 @@ export default function ProductDetails() {
             setErrorMsg(res.response.data.message);
 
         }
+
+        setAddLoading(false);
 
     }
 
@@ -83,7 +90,7 @@ export default function ProductDetails() {
 
         <div className={detCss.container}>
 
-            {isLoading ? <div 
+            {isLoading ? <div
                 style={{width : '100%' , height : '400px' , display : 'flex' , alignItems : 'center' , justifyContent : 'center'}}
             >
 
@@ -119,7 +126,12 @@ export default function ProductDetails() {
 
                     </div>
 
-                    <button onClick={() => sendToCard(data.data.data.id)} className={detCss.add_cart}> <img src={cart} alt="" /> + Add To Cart</button>
+                    <button onClick={() => sendToCard(data.data.data.id)} className={detCss.add_cart}> {addLoading ? <ThreeCircles
+
+                            visible={true} height="20" width="20" color="var(--light-color)" 
+                            ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+
+                        /> : <><img src={cart} alt="" /> + Add To Cart</>} </button>
 
                 </div>
 

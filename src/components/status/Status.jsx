@@ -6,7 +6,7 @@ export default function Status({msg , img , display}){
 
     return <React.Fragment>
 
-        <div className={display ? statusCss.status_msg + ' ' + statusCss.display_cont : statusCss.display_cont_out}>
+        <div className={statusCss.status_msg}>
 
             <div className={display ? statusCss.msg_box + ' ' + statusCss.display_msg : statusCss.display_msg_out}>
 

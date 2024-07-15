@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import cart from '../../images/icons/cart-icon.svg'
 import { cartContext } from '../../contexts/cartContext';
 import Status from '../status/Status';
+import { ThreeCircles } from 'react-loader-spinner';
 
 export default function ProCard({data}){
 
@@ -29,10 +30,13 @@ export default function ProCard({data}){
 
     const [success, setSuccess] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [addLoading, setAddLoading] = useState(false)
 
     const {addToCard} = useContext(cartContext)
 
     const addProductToCard = async (id) => {
+
+        setAddLoading(true);
 
         const res = await addToCard(id);
 
@@ -43,9 +47,11 @@ export default function ProCard({data}){
         }
         else{
 
-            setErrorMsg('Product not added to cart');
+            setErrorMsg('Login to can add items in card');
 
         }
+
+        setAddLoading(false);
 
     }
 
@@ -83,6 +89,15 @@ export default function ProCard({data}){
 
         {success && visible ? <Status display={visibility} img = {'success'} msg = {success} /> : ''}
         {errorMsg && visible ? <Status display={visibility} img = {'error'} msg = {errorMsg} /> : ''}
+
+        {addLoading ? <div className={productsCss.loading_page}>
+            <ThreeCircles
+
+                visible={true} height="80" width="80" color="var(--light-color)" 
+                ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+
+            />
+        </div> : ''}
 
         <div  className={productsCss.card}>
 

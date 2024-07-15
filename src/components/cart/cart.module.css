@@ -43,6 +43,33 @@
 
 }
 
+.delete_all{
+
+    width: 100%;
+    padding: 10px 20px;
+
+}
+
+.delete_all button{
+
+    padding: 10px 20px;
+    border: 2px solid var(--dark-color);
+    background-color: transparent;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 4px;
+    color: var(--dark-color);
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.delete_all button:hover{
+
+    opacity: 0.8;
+
+}
+
 .card{
 
     position: relative;
@@ -180,6 +207,21 @@
 .total_price p span{
 
     color: var(--darker-color);
+
+}
+
+.loading_page {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--darker-color-085);
+    z-index: 101;
 
 }
 
