@@ -8,6 +8,7 @@ export default function CartContextProvider({children}) {
     const [cardItems, setCardItems] = useState(0);
     const [cartTotalCount, setCartTotalCount] = useState(0);
     const [cartProducts, setCartProducts] = useState(null);
+    const [cartId, setCartId] = useState(null);
 
     const addToCard = async (proId) => {
 
@@ -60,6 +61,7 @@ export default function CartContextProvider({children}) {
             setCardItems(data.numOfCartItems);
             setCartTotalCount(data.data.totalCartPrice);
             setCartProducts(data.data.products);
+            setCartId(data.data._id);
 
             return data ;
 
@@ -159,7 +161,7 @@ export default function CartContextProvider({children}) {
 
     });
 
-    return <cartContext.Provider value={{addToCard , cardItems , cartProducts , setCartProducts , cartTotalCount , getUserCard , deleteProduct , updateProduct , deleteAllProduct}}>
+    return <cartContext.Provider value={{addToCard , cardItems , cartProducts , cartId , setCartProducts , setCartTotalCount , setCardItems , cartTotalCount , getUserCard , deleteProduct , updateProduct , deleteAllProduct}}>
 
         {children}
 

@@ -1,87 +1,182 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import checkCss from './check_out.module.css';
+import { useFormik } from 'formik';
+import axios from 'axios';
 import { cartContext } from '../../contexts/cartContext';
+import Status from '../status/Status';
 import { ThreeCircles } from 'react-loader-spinner';
+import { useNavigate } from 'react-router-dom';
 
 export default function CheckOut() {
 
-    const {cartProducts , cartTotalCount} = useContext(cartContext);
+    const [success, setSuccess] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+    const [load, setLoad] = useState(false);
 
-    if(cartProducts === null){
+    const {cartId , setCardItems , setCartTotalCount , setCartProducts} = useContext(cartContext);
 
-        return <div 
-            style={{width : '100%' , height : '400px' , display : 'flex' , alignItems : 'center' , justifyContent : 'center'}}
-        >
+    const navigate = useNavigate();
 
-            <ThreeCircles
+    const inputsValue = {
 
-                visible={true} height="80" width="80" color="var(--dark-color)" 
-                ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
-
-            />
-
-        </div>
+        name : "",
+        phone : "",
+        email : "",
+        location : "",
+        details : "",
 
     }
 
+    const sendData = async(values) => {
+
+        setLoad(true)
+
+        try {
+
+            const {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartId}` , values , {
+
+                headers : {token : localStorage.getItem('auth_token')}
+
+            });
+
+            if(data.status === 'success'){
+
+                setSuccess('The order has been shipped');
+
+                setCardItems(0);
+                setCartTotalCount(0);
+                setCartProducts([])
+
+                setTimeout(() => {
+
+                    navigate('/');
+
+                } , 3000)
+
+            }
+            else{
+
+                setErrorMsg("The order hasn't been shipped")
+
+            }
+
+        } 
+        catch (error) {
+
+            console.log(error);
+
+        }
+
+        setLoad(false)
+
+    }
+
+    const checkFormik = useFormik({
+
+        initialValues : inputsValue,
+
+        onSubmit : sendData,
+
+    });
+
+    const [visible, setVisible] = useState(true);
+
+    useEffect(() => {
+
+        if(errorMsg){
+
+            const timer = setTimeout(() => {
+
+                setVisible(false);
+
+            }, 3000);
+
+            return () => {
+
+                clearTimeout(timer);
+
+                setVisible(true);
+
+            };
+
+        }
+
+    }, [errorMsg]);
+
     return <React.Fragment>
+
+        {success ? <Status display={visible} img = {'success'} msg = {success} /> : ''}
+        {errorMsg && visible ? <Status display={visible} img = {'error'} msg = {errorMsg} /> : ''}
 
         <div className={checkCss.container}>
 
-            <div className={checkCss.check_side + ' ' + checkCss.shapedividers_com_7656 + ' ' + checkCss.shapedividers_com_3913}>
+            <div className={checkCss.check_out_side}>
 
-                <div className={checkCss.check_cont}>
+                <form style={load ? {opacity : '0.6'} : {opacity : '1'}} onSubmit={checkFormik.handleSubmit}>
 
-                    <div className={checkCss.scroll_check}>
+                    <div className={checkCss.input_cont}>
 
-                        <table>
-
-                            <thead>
-
-                                <tr>
-
-                                    <th>Name</th>
-                                    <th>Count</th>
-                                    <th>Price</th>
-                                    <th>Total</th>
-
-                                </tr>
-
-                            </thead>
-
-                            <tbody>
-
-                                {cartProducts.map((product , idx) => {
-
-                                    return<tr key={idx}>
-
-                                        <td>{product.product.title.split(' ').slice(0 , 3).join(' ')}</td>
-                                        <td>{product.count}</td>
-                                        <td>{product.price} EGP</td>
-                                        <td>{product.count * product.price} EGP</td>
-
-                                    </tr>
-
-                                })}
-
-                            </tbody>
-
-                        </table>
-
-                        <div className={checkCss.sub_total}>
-
-                            <p><span>TOTAL : </span> {cartTotalCount} EGP</p>
-
-                        </div>
+                        <div className={checkCss.loader}></div>
+                        <label htmlFor='name'><span>Name :</span></label>
+                        <input id='name' onChange={checkFormik.handleChange} value={checkFormik.values.name} type="text" />
 
                     </div>
 
-                </div>
+                    <div className={checkCss.input_cont}>
+
+                        <div className={checkCss.loader}></div>
+                        <label htmlFor='phone'><span>Phone :</span></label>
+                        <input id='phone' onChange={checkFormik.handleChange} value={checkFormik.values.phone} type="text" />
+
+                    </div>
+
+                    <div className={checkCss.input_cont}>
+
+                        <div className={checkCss.loader}></div>
+                        <label htmlFor='email'><span>Email :</span></label>
+                        <input id='email' onChange={checkFormik.handleChange} value={checkFormik.values.email} type="text" />
+
+                    </div>
+
+                    <div className={checkCss.input_cont}>
+
+                        <div className={checkCss.loader}></div>
+                        <label htmlFor='location'><span>Location :</span></label>
+                        <input id='location' onChange={checkFormik.handleChange} value={checkFormik.values.location} type="text" />
+
+                    </div>
+
+                    <div className={checkCss.input_cont}>
+
+                        <div className={checkCss.loader}></div>
+                        <label htmlFor='details'><span>Details :</span></label>
+                        <input id='details' onChange={checkFormik.handleChange} value={checkFormik.values.details} type="text" />
+
+                    </div>
+
+                    <button className={checkCss.submit} type="submit">
+
+                        {load ? 
+                        <ThreeCircles
+
+                            visible={true} height="20" width="20" color="var(--light-color)" 
+                            ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
+
+                        />
+                        : 'Confirm'}
+
+                    </button>
+
+                </form>
 
             </div>
 
-            <div className={checkCss.check_out_side}></div>
+            <div className={checkCss.img_side}>
+
+                <img src={require('../../images/check-out-h.png')} alt="" />
+
+            </div>
 
         </div>
 
