@@ -10,7 +10,30 @@ export default function CartCard({data , del}) {
 
     const [success, setSuccess] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
-    const [addLoading, setAddLoading] = useState(false)
+    const [addLoading, setAddLoading] = useState(false);
+    const [updateCount, setUpdateCount] = useState(data.count);
+
+    // increment-decrement-count 
+
+    const increment = () => {
+
+        if(updateCount > 0){
+
+            setUpdateCount(updateCount + 1);
+
+        }
+
+    }
+
+    const decrement = () => {
+
+        if(updateCount > 1){
+
+            setUpdateCount(updateCount - 1);
+
+        }
+
+    }
 
     const {updateProduct , deleteProduct} = useContext(cartContext);
 
@@ -39,7 +62,18 @@ export default function CartCard({data , del}) {
 
         setAddLoading(true);
 
-        await updateProduct(id , count);
+        const res = await updateProduct(id , count);
+
+        if(res.status === 'success'){
+
+            setSuccess('The item has been updated successfully');
+
+        }
+        else{
+
+            setErrorMsg("The item isn't updated");
+
+        }
 
         setAddLoading(false);
 
@@ -103,15 +137,21 @@ export default function CartCard({data , del}) {
 
                 <div className={cCartCss.count}>
 
-                    <span onClick={() => data.count > 0 ? updateCart(data.product.id , data.count + 1) : ''} className={cCartCss.operation}><i className="fa-solid fa-plus"></i></span>
-                    <span className={cCartCss.counter}> {data.count} </span>
-                    <span onClick={() => data.count > 1 ? updateCart(data.product.id , data.count - 1) : ''} className={cCartCss.operation}><i className="fa-solid fa-minus"></i></span>
+                    <span onClick={increment} className={cCartCss.operation}><i className="fa-solid fa-plus"></i></span>
+                    <span className={cCartCss.counter}> {updateCount} </span>
+                    <span onClick={decrement} className={cCartCss.operation}><i className="fa-solid fa-minus"></i></span>
 
                 </div>
 
                 <p><span>Total Price : </span> {data.price * data.count} EGP</p>
 
             </div>
+
+            {updateCount > 0 ? <div className={cCartCss.update}>
+
+                <button onClick={() => updateCart(data.product.id , updateCount)}>Update</button>
+
+            </div> : ''}
 
         </div>
 

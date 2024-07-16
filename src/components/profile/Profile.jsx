@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import profileCss from './profile.module.css';
 
 import userType from '../../images/icons/profile-icon.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../contexts/authentication';
+import { jwtDecode } from 'jwt-decode';
+import { cartContext } from '../../contexts/cartContext';
 
 export default function Profile() {
 
+    const [userName, setUserName] = useState(null);
+    const [userRole, setUserRole] = useState(null)
+
     const {setToken} = useContext(authContext);
+    const {cardItems} = useContext(cartContext);
 
     const navigate = useNavigate();
 
@@ -18,7 +24,15 @@ export default function Profile() {
         setToken(null);
         navigate('/auth');
 
-    }
+    };
+
+    useEffect(() => {
+
+        const res = jwtDecode(localStorage.getItem('auth_token'));
+        setUserName(res.name)
+        setUserRole(res.role)
+
+    } , []);
 
     return <React.Fragment>
 
@@ -38,24 +52,18 @@ export default function Profile() {
 
                 <div className={profileCss.main_info}>
 
-                    <h3>Your Name</h3>
+                    <h3>{userName}</h3>
 
-                    <p style={{marginBottom : '5px'}} className={profileCss.p}>
-
-                        <i className="fa-regular fa-envelope"></i>
-                        <span>Your Email</span>
-
-                    </p>
                     <p className={profileCss.p}> 
 
                         <img src={userType} alt="type : " /> 
-                        <span>Yor Type</span>
+                        <span>{userRole}</span>
 
                     </p>
 
                     <div className={profileCss.some_data}>
 
-                        <p><span>0</span> Item in cart</p>
+                        <p><span>{cardItems}</span> Item in cart</p>
 
                             <span className={profileCss.data_break}></span>
 

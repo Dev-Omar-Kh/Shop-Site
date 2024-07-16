@@ -137,6 +137,8 @@ export default function Cart() {
 
                 <p><span>SUB - TOTAL : </span> {cartTotalCount} EGP</p>
 
+                <Link className={cartCss.button} to={'/checkOut'}>Check Out</Link>
+
             </div>
 
         </div>

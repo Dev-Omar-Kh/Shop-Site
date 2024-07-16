@@ -143,7 +143,7 @@ export default function Header() {
 
                 <NavLink id='cart' to={'/cart'} className={headerCss.cart_icon}>
 
-                    {cardItems > 0 ? <span className={headerCss.notification}>{cardItems}</span> : ''}
+                    {cardItems > 0 ? <span className={headerCss.notification}>{cardItems < 9 ? cardItems : '+9'}</span> : ''}
 
                     <img className={headerCss.icon} src={cart} alt="profile" />
                     <p>Cart</p>

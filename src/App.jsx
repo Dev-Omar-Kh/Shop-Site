@@ -17,6 +17,7 @@ import ProtectedRoutes from './components/protect-routes/ProtectedRoutes';
 import ProductDetails from './components/product-det/ProductDetails';
 import Cart from './components/cart/Cart';
 import CartContextProvider from './contexts/cartContext';
+import CheckOut from './components/check-out/CheckOut';
 
 const router = createBrowserRouter([
 
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
         {path : 'profile' , element : <ProtectedRoutes> <Profile /> </ProtectedRoutes>},
         {path : 'cart' , element : <> <Cart /> </>},
         {path : '/proDet/:id' , element : <ProductDetails />},
+        {path : 'checkOut' , element : <CheckOut />},
 
         {path : '*' , element : <Error />},
 
