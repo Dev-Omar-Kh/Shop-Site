@@ -12,7 +12,7 @@ export default function Footer() {
 
                 <div className={footerCss.first_section}>
 
-                    <Link to='/'><img src={require('../../images/logo-dark.png')} alt="logo" /></Link>
+                    <Link to='/'><img loading='lazy' src={require('../../images/logo-dark.png')} alt="logo" /></Link>
 
                     <p>Buy with peace of mind and do not worry about delivery</p>
 

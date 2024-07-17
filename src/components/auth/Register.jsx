@@ -195,9 +195,9 @@ export default function Register() {
 
                             <div className={authCss.eye_cont}>
 
-                                <img style={count % 2 === 0 ? {opacity : '1' , visibility : 'visible'} : {}} src={eye} alt="eye" />
+                                <img loading='lazy' style={count % 2 === 0 ? {opacity : '1' , visibility : 'visible'} : {}} src={eye} alt="eye" />
 
-                                <img style={count % 2 !== 0 ? {opacity : '1' , visibility : 'visible'} : {}} src={eyeSlash} alt="eye-slash" />
+                                <img loading='lazy' style={count % 2 !== 0 ? {opacity : '1' , visibility : 'visible'} : {}} src={eyeSlash} alt="eye-slash" />
 
                             </div>
 
@@ -214,9 +214,9 @@ export default function Register() {
 
                             <div className={authCss.eye_cont}>
 
-                                <img style={reCount % 2 === 0 ? {opacity : '1' , visibility : 'visible'} : {}} src={eye} alt="eye" />
+                                <img loading='lazy' style={reCount % 2 === 0 ? {opacity : '1' , visibility : 'visible'} : {}} src={eye} alt="eye" />
 
-                                <img style={reCount % 2 !== 0 ? {opacity : '1' , visibility : 'visible'} : {}} src={eyeSlash} alt="eye-slash" />
+                                <img loading='lazy' style={reCount % 2 !== 0 ? {opacity : '1' , visibility : 'visible'} : {}} src={eyeSlash} alt="eye-slash" />
 
                             </div>
 
@@ -261,7 +261,7 @@ export default function Register() {
 
             <div className={authCss.right_side}>
 
-                <img src={require('../../images/auth-logo-bg.png')} alt="" />
+                <img loading='lazy' src={require('../../images/auth-logo-bg.png')} alt="" />
 
             </div>
 

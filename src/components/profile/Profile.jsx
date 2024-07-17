@@ -42,7 +42,7 @@ export default function Profile() {
 
                 <div className={profileCss.img_cont}>
 
-                    <img src={require('../../images/pfp-img.png')} alt="name" />
+                    <img loading='lazy' src={require('../../images/pfp-img.png')} alt="name" />
 
                 </div>
 
@@ -56,7 +56,7 @@ export default function Profile() {
 
                     <p className={profileCss.p}> 
 
-                        <img src={userType} alt="type : " /> 
+                        <img loading='lazy' src={userType} alt="type : " /> 
                         <span>{userRole}</span>
 
                     </p>

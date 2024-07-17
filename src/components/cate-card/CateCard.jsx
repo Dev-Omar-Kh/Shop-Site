@@ -8,7 +8,7 @@ export default function CateCard({data}) {
 
         <div id='card' className={cCard.card}>
 
-            <img src={data.image} alt="" />
+            <img loading='lazy' src={data.image} alt="" />
 
             <p>{data.name}</p>
 

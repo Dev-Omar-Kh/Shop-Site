@@ -103,7 +103,7 @@ export default function ProCard({data}){
 
             <Link to={`/proDet/${data.id}`}>
 
-                <img src={data.imageCover} alt="" />
+                <img loading='lazy' src={data.imageCover} alt="" />
 
                 <div className={productsCss.det}>
 
@@ -121,7 +121,7 @@ export default function ProCard({data}){
 
             </Link>
 
-            <button onClick={() => addProductToCard(data.id)} className={productsCss.add_card}><img src={cart} alt="add" /></button>
+            <button onClick={() => addProductToCard(data.id)} className={productsCss.add_card}><img loading='lazy' src={cart} alt="add" /></button>
 
         </div>
 

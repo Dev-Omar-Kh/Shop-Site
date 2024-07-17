@@ -84,7 +84,7 @@ export default function Slider(){
 
                 <div className={sliderCss.slide_scroll}>
 
-                    <img id='images' className={fade ? sliderCss.fade : sliderCss.fade_in} src={images[count]} alt="sliders" />
+                    <img loading='lazy' id='images' className={fade ? sliderCss.fade : sliderCss.fade_in} src={images[count]} alt="sliders" />
 
                 </div>
 
@@ -94,8 +94,8 @@ export default function Slider(){
 
             <div className={sliderCss.right_img}>
 
-                <div className={sliderCss.right_img_cont}><img className={fade ? sliderCss.img_out : sliderCss.img_in} src={images[(count + 1) % 3]} alt="" /></div>
-                <div className={sliderCss.right_img_cont}><img className={fade ? sliderCss.img_out : sliderCss.img_in} src={images[(count + 2) % 3]} alt="" /></div>
+                <div className={sliderCss.right_img_cont}><img loading='lazy' className={fade ? sliderCss.img_out : sliderCss.img_in} src={images[(count + 1) % 3]} alt="" /></div>
+                <div className={sliderCss.right_img_cont}><img loading='lazy' className={fade ? sliderCss.img_out : sliderCss.img_in} src={images[(count + 2) % 3]} alt="" /></div>
 
             </div>
 

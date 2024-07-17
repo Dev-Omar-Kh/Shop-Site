@@ -20,10 +20,8 @@ export default function CheckOut() {
 
     const inputsValue = {
 
-        name : "",
         phone : "",
-        email : "",
-        location : "",
+        city : "",
         details : "",
 
     }
@@ -34,7 +32,13 @@ export default function CheckOut() {
 
         try {
 
-            const {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartId}` , values , {
+            const {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartId}` , 
+                {
+
+                    "shippingAddress" : values
+
+                }
+                , {
 
                 headers : {token : localStorage.getItem('auth_token')}
 
@@ -50,7 +54,7 @@ export default function CheckOut() {
 
                 setTimeout(() => {
 
-                    navigate('/');
+                    navigate('/orders');
 
                 } , 3000)
 
@@ -142,15 +146,15 @@ export default function CheckOut() {
                     <div className={checkCss.input_cont}>
 
                         <div className={checkCss.loader}></div>
-                        <label htmlFor='location'><span>Location :</span></label>
-                        <input id='location' onChange={checkFormik.handleChange} value={checkFormik.values.location} type="text" />
+                        <label htmlFor='city'><span>Location :</span></label>
+                        <input id='city' onChange={checkFormik.handleChange} value={checkFormik.values.city} type="text" />
 
                     </div>
 
                     <div className={checkCss.input_cont}>
 
                         <div className={checkCss.loader}></div>
-                        <label htmlFor='details'><span>Details :</span></label>
+                        <label htmlFor='details'><span>Order Name :</span></label>
                         <input id='details' onChange={checkFormik.handleChange} value={checkFormik.values.details} type="text" />
 
                     </div>
@@ -174,7 +178,7 @@ export default function CheckOut() {
 
             <div className={checkCss.img_side}>
 
-                <img src={require('../../images/check-out-h.png')} alt="" />
+                <img loading='lazy' src={require('../../images/check-out-h.png')} alt="" />
 
             </div>
 

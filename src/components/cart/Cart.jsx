@@ -86,7 +86,7 @@ export default function Cart() {
 
                 <p>Your Cart Items</p>
 
-                <Link className={cartCss.back} to={'/products'}>Back to shopping</Link>
+                <Link className={cartCss.back} to={'/orders'}>See all orders</Link>
 
             </div>
 
@@ -117,7 +117,7 @@ export default function Cart() {
 
                 <p>Your Cart Items</p>
 
-                <Link className={cartCss.back} to={'/products'}>Back to shopping</Link>
+                <Link className={cartCss.back} to={'/orders'}>See all orders</Link>
 
             </div>
 

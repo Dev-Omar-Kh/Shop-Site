@@ -115,7 +115,7 @@ export default function Header() {
 
             <Link to='/' className={headerCss.logo}>
 
-                <img src={require('../../images/logo.png')} alt="shop" />
+                <img loading='lazy' src={require('../../images/logo.png')} alt="shop" />
 
             </Link>
 
@@ -136,7 +136,7 @@ export default function Header() {
 
                 <NavLink id='prof' to={ token === null ? '/auth' : 'profile'} className={headerCss.profile_icon}>
 
-                    <img className={headerCss.icon} src={profile} alt="profile" />
+                    <img loading='lazy' className={headerCss.icon} src={profile} alt="profile" />
                     <p>Profile</p>
 
                 </NavLink>
@@ -145,7 +145,7 @@ export default function Header() {
 
                     {cardItems > 0 ? <span className={headerCss.notification}>{cardItems <= 9 ? cardItems : '+9'}</span> : ''}
 
-                    <img className={headerCss.icon} src={cart} alt="profile" />
+                    <img loading='lazy' className={headerCss.icon} src={cart} alt="profile" />
                     <p>Cart</p>
 
                 </NavLink>

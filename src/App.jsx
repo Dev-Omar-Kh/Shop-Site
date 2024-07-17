@@ -18,6 +18,7 @@ import ProductDetails from './components/product-det/ProductDetails';
 import Cart from './components/cart/Cart';
 import CartContextProvider from './contexts/cartContext';
 import CheckOut from './components/check-out/CheckOut';
+import AllOrders from './components/all-orders/AllOrders';
 
 const router = createBrowserRouter([
 
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
         {path : 'cart' , element : <> <Cart /> </>},
         {path : '/proDet/:id' , element : <ProductDetails />},
         {path : 'checkOut' , element : <CheckOut />},
+        {path : 'orders' , element : <AllOrders />},
 
         {path : '*' , element : <Error />},
 

@@ -131,7 +131,7 @@ export default function ProductDetails() {
                             visible={true} height="20" width="20" color="var(--light-color)" 
                             ariaLabel="three-circles-loading" wrapperStyle={{}} wrapperClass=""
 
-                        /> : <><img src={cart} alt="" /> + Add To Cart</>} </button>
+                        /> : <><img loading='lazy' src={cart} alt="" /> + Add To Cart</>} </button>
 
                 </div>
 

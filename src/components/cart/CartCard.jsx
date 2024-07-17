@@ -126,7 +126,7 @@ export default function CartCard({data , del}) {
 
             <div className={cCartCss.img}>
 
-                <img src={data.product.imageCover} alt="" />
+                <img loading='lazy' src={data.product.imageCover} alt="" />
 
             </div>
 

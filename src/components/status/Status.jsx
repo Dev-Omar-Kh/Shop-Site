@@ -14,7 +14,7 @@ export default function Status({msg , img , display}){
 
                     <p className={statusCss.msg_p}> {msg} </p>
 
-                    {img === 'success' ? <img src={require('../../images/success.png')} alt="success" /> : <img src={require('../../images/error.png')} alt="error" />}
+                    {img === 'success' ? <img loading='lazy' src={require('../../images/success.png')} alt="success" /> : <img loading='lazy' src={require('../../images/error.png')} alt="error" />}
 
                 </div>
 
