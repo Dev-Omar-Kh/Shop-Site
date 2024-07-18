@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import CartCard from './CartCard';
@@ -38,15 +38,12 @@ export default function Cart() {
 
     }
 
-    useEffect(() => {
 
-        if(cartProducts === null){
+    if(cartProducts === null){
 
-            getAllProCart();
+        getAllProCart();
 
-        }
-
-    })
+    }
 
     if(cartProducts === null){
 
@@ -86,7 +83,7 @@ export default function Cart() {
 
                 <p>Your Cart Items</p>
 
-                <Link className={cartCss.back} to={'/orders'}>See all orders</Link>
+                <Link className={cartCss.back} to={'/allorders'}>See all orders</Link>
 
             </div>
 
@@ -117,7 +114,7 @@ export default function Cart() {
 
                 <p>Your Cart Items</p>
 
-                <Link className={cartCss.back} to={'/orders'}>See all orders</Link>
+                <Link className={cartCss.back} to={'/allorders'}>See all orders</Link>
 
             </div>
 

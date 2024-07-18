@@ -28,9 +28,6 @@ export default function CartContextProvider({children}) {
 
             });
 
-            // setCardItems(data.numOfCartItems);
-            // setCartTotalCount(data.data.totalCartPrice);
-
             getUserCard();
 
             return data ;
@@ -56,7 +53,7 @@ export default function CartContextProvider({children}) {
 
                 }
 
-            })
+            });
 
             setCardItems(data.numOfCartItems);
             setCartTotalCount(data.data.totalCartPrice);

@@ -12,6 +12,7 @@ export default function CheckOut() {
 
     const [success, setSuccess] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [errorRadio, setErrorRadio] = useState(null);
     const [load, setLoad] = useState(false);
 
     const {cartId , setCardItems , setCartTotalCount , setCartProducts} = useContext(cartContext);
@@ -23,56 +24,125 @@ export default function CheckOut() {
         phone : "",
         city : "",
         details : "",
+        name : "",
+        email : ""
 
     }
 
     const sendData = async(values) => {
 
-        setLoad(true)
+        const fRadio = document.getElementById('cash').checked;
+        const SRadio = document.getElementById('online').checked;
 
-        try {
+        if(!fRadio && !SRadio){
 
-            const {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartId}` , 
-                {
-
-                    "shippingAddress" : values
-
-                }
-                , {
-
-                headers : {token : localStorage.getItem('auth_token')}
-
-            });
-
-            if(data.status === 'success'){
-
-                setSuccess('The order has been shipped');
-
-                setCardItems(0);
-                setCartTotalCount(0);
-                setCartProducts([])
-
-                setTimeout(() => {
-
-                    navigate('/orders');
-
-                } , 3000)
-
-            }
-            else{
-
-                setErrorMsg("The order hasn't been shipped")
-
-            }
-
-        } 
-        catch (error) {
-
-            console.log(error);
+            setErrorRadio('You must choose method');
 
         }
 
-        setLoad(false)
+        if(fRadio){
+
+            setLoad(true);
+
+            try {
+
+                const {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartId}` , 
+                    {
+
+                        "shippingAddress" : values
+
+                    }
+                    , {
+
+                    headers : {token : localStorage.getItem('auth_token')}
+
+                });
+
+                if(data.status === 'success'){
+
+                    setSuccess('The order has been shipped');
+
+                    setCardItems(0);
+                    setCartTotalCount(0);
+                    setCartProducts([]);
+
+                    setTimeout(() => {
+
+                        navigate('/allorders');
+
+                    } , 3000);
+
+                }
+                else{
+
+                    setErrorMsg("The order hasn't been shipped")
+
+                }
+
+            } 
+            catch (error) {
+
+                console.log(error);
+
+            }
+
+            setLoad(false);
+
+        }
+
+        if(SRadio){
+
+            setLoad(true);
+
+            try {
+
+                const {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}` , 
+
+                    {"shippingAddress" : values}
+                    ,{
+
+                        headers : {token : localStorage.getItem('auth_token')}, 
+                        params : {ulr : "http://localhost:3000"}
+
+                    }
+
+                );
+
+                // if(data.status === 'success'){
+
+                //     setSuccess('The order has been shipped');
+
+                //     setCardItems(0);
+                //     setCartTotalCount(0);
+                //     setCartProducts([])
+
+                //     setTimeout(() => {
+
+                //         navigate('/allorders');
+
+                //     } , 3000)
+
+                // }
+                // else{
+
+                //     setErrorMsg("The order hasn't been shipped")
+
+                // }
+
+                console.log(data);
+
+                window.open(data.session.url , "_blank");
+
+            } 
+            catch (error) {
+
+                console.log(error);
+
+            }
+
+            setLoad(false);
+
+        }
 
     }
 
@@ -81,6 +151,46 @@ export default function CheckOut() {
         initialValues : inputsValue,
 
         onSubmit : sendData,
+
+        validate : (values) => {
+
+            setErrorMsg(null);
+
+            const errors = {};
+
+            if(values.name.length < 4){
+
+                errors.name = 'Name is invalid';
+
+            }
+
+            if(!values.phone.match(/^(02)?01[0125][0-9]{8}$/)){
+
+                errors.phone = 'Phone number is invalid';
+
+            }
+
+            if(!values.email.includes('@') && !values.email.includes('@')){
+
+                errors.email = 'Email is invalid';
+
+            }
+
+            if(values.city.length < 3){
+
+                errors.city = 'Location is invalid';
+
+            }
+
+            if(values.details.length < 1){
+
+                errors.details = 'Order details is short';
+
+            }
+
+            return errors;
+
+        }
 
     });
 
@@ -122,40 +232,84 @@ export default function CheckOut() {
                     <div className={checkCss.input_cont}>
 
                         <div className={checkCss.loader}></div>
-                        <label htmlFor='name'><span>Name :</span></label>
-                        <input id='name' onChange={checkFormik.handleChange} value={checkFormik.values.name} type="text" />
+                        <label htmlFor='name'><span>Name :</span> {checkFormik.errors.name && checkFormik.touched.name ? <span className={checkCss.error_msg}>* {checkFormik.errors.name}</span> : ''} </label>
+                        <input disabled={load} onBlur={checkFormik.handleBlur} id='name' onChange={checkFormik.handleChange} value={checkFormik.values.name} type="text" />
 
                     </div>
 
                     <div className={checkCss.input_cont}>
 
                         <div className={checkCss.loader}></div>
-                        <label htmlFor='phone'><span>Phone :</span></label>
-                        <input id='phone' onChange={checkFormik.handleChange} value={checkFormik.values.phone} type="text" />
+                        <label htmlFor='phone'><span>Phone :</span> {checkFormik.errors.phone && checkFormik.touched.phone ? <span className={checkCss.error_msg}>* {checkFormik.errors.phone}</span> : ''} </label>
+                        <input disabled={load} onBlur={checkFormik.handleBlur} id='phone' onChange={checkFormik.handleChange} value={checkFormik.values.phone} type="text" />
 
                     </div>
 
                     <div className={checkCss.input_cont}>
 
                         <div className={checkCss.loader}></div>
-                        <label htmlFor='email'><span>Email :</span></label>
-                        <input id='email' onChange={checkFormik.handleChange} value={checkFormik.values.email} type="text" />
+                        <label htmlFor='email'><span>Email :</span> {checkFormik.errors.email && checkFormik.touched.email ? <span className={checkCss.error_msg}>* {checkFormik.errors.email}</span> : ''} </label>
+                        <input disabled={load} onBlur={checkFormik.handleBlur} id='email' onChange={checkFormik.handleChange} value={checkFormik.values.email} type="text" />
 
                     </div>
 
                     <div className={checkCss.input_cont}>
 
                         <div className={checkCss.loader}></div>
-                        <label htmlFor='city'><span>Location :</span></label>
-                        <input id='city' onChange={checkFormik.handleChange} value={checkFormik.values.city} type="text" />
+                        <label htmlFor='city'><span>Location :</span> {checkFormik.errors.city && checkFormik.touched.city ? <span className={checkCss.error_msg}>* {checkFormik.errors.city}</span> : ''} </label>
+                        <input disabled={load} onBlur={checkFormik.handleBlur} id='city' onChange={checkFormik.handleChange} value={checkFormik.values.city} type="text" />
 
                     </div>
 
                     <div className={checkCss.input_cont}>
 
                         <div className={checkCss.loader}></div>
-                        <label htmlFor='details'><span>Order Name :</span></label>
-                        <input id='details' onChange={checkFormik.handleChange} value={checkFormik.values.details} type="text" />
+                        <label htmlFor='details'><span>Order Name :</span> {checkFormik.errors.details && checkFormik.touched.details ? <span className={checkCss.error_msg}>* {checkFormik.errors.details}</span> : ''} </label>
+                        <input disabled={load} onBlur={checkFormik.handleBlur} id='details' onChange={checkFormik.handleChange} value={checkFormik.values.details} type="text" />
+
+                    </div>
+
+                    <div className={checkCss.radio_btns}>
+
+                        <div className={checkCss.radio_sec}>
+
+                            <div>
+
+                                
+                                <label htmlFor="cash">
+
+                                    <input id='cash' name="radio" type="radio" />
+
+                                    <button type='button' className={checkCss.button}><span className={checkCss.span_check}></span></button>
+
+                                    Cash
+
+                                </label>
+
+                            </div>
+
+                            <div>
+
+                                
+                                <label htmlFor="online">
+
+                                    <input id='online' name="radio" type="radio" />
+
+                                    <button type='button' className={checkCss.button}><span className={checkCss.span_check}></span></button>
+
+                                    Credit Card
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                        {errorRadio ? <div className={checkCss.error_msg_radio}>
+
+                            <p>* {errorRadio}</p>
+
+                        </div> : ''}
 
                     </div>
 

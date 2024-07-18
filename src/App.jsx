@@ -19,6 +19,7 @@ import Cart from './components/cart/Cart';
 import CartContextProvider from './contexts/cartContext';
 import CheckOut from './components/check-out/CheckOut';
 import AllOrders from './components/all-orders/AllOrders';
+import OrderContextProvider from './contexts/orderContext';
 
 const router = createBrowserRouter([
 
@@ -36,10 +37,10 @@ const router = createBrowserRouter([
         ]},
 
         {path : 'profile' , element : <ProtectedRoutes> <Profile /> </ProtectedRoutes>},
-        {path : 'cart' , element : <> <Cart /> </>},
+        {path : 'cart' , element : <ProtectedRoutes> <Cart /> </ProtectedRoutes>},
         {path : '/proDet/:id' , element : <ProductDetails />},
         {path : 'checkOut' , element : <CheckOut />},
-        {path : 'orders' , element : <AllOrders />},
+        {path : 'allorders' , element : <AllOrders />},
 
         {path : '*' , element : <Error />},
 
@@ -56,7 +57,9 @@ export default function App() {
         <QueryClientProvider client={clientQuery}>
             <CartContextProvider>
                 <AuthProvider>
-                    <RouterProvider router={router} />
+                    <OrderContextProvider>
+                        <RouterProvider router={router} />
+                    </OrderContextProvider>
                 </AuthProvider>
             </CartContextProvider>
         </QueryClientProvider>

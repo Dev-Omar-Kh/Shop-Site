@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import ordersCss from './allOrders.module.css';
 import OrderCard from './OrderCard';
-import { jwtDecode } from 'jwt-decode';
-import axios from 'axios';
 import { ThreeCircles } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
+import { orderContext } from '../../contexts/orderContext';
+import { jwtDecode } from 'jwt-decode';
 
 export default function AllOrders() {
+
+    const {getAllOrders} = useContext(orderContext);
 
     const [ordersUser, setOrdersUser] = useState(null);
 
@@ -15,31 +17,27 @@ export default function AllOrders() {
 
     useEffect(() => {
 
-        const {id} = jwtDecode(localStorage.getItem('auth_token'));
-
-        getAllOrders(id);
+        const {id} = jwtDecode(localStorage.getItem('auth_token'))
+        getAllUserOrders(id);
 
     });
 
-    const getAllOrders = async(id) => {
+    const getAllUserOrders = async(id) => {
 
-        try {
+        const res = await getAllOrders(id);
 
-            const {data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`);
+        if(res.statusMsg === 'fail'){
 
-            setOrdersUser(data);
+            navigate('/error')
 
-        } catch (error) {
+        }
+        else{
 
-            setTimeout(() => {
-
-                navigate('/error');
-
-            }, 100);
+            setOrdersUser(res);
 
         }
 
-    };
+    }
 
     if(ordersUser === null){
 

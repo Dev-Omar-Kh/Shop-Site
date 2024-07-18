@@ -10,6 +10,7 @@ import Status from '../status/Status';
 import { ThreeCircles } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../contexts/authentication';
+import { cartContext } from '../../contexts/cartContext';
 
 export default function Login() {
 
@@ -25,6 +26,8 @@ export default function Login() {
     const [successMsg, setSuccessMsg] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
+
+    const {getUserCard} = useContext(cartContext);
 
     const navigate = useNavigate()
 
@@ -44,6 +47,8 @@ export default function Login() {
                 setToken(data.token);
 
                 setSuccessMsg('Successfully logged in');
+
+                getUserCard();
 
                 setTimeout(() => {
 

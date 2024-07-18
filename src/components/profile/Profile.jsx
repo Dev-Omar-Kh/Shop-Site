@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../contexts/authentication';
 import { jwtDecode } from 'jwt-decode';
 import { cartContext } from '../../contexts/cartContext';
+import { orderContext } from '../../contexts/orderContext';
 
 export default function Profile() {
 
@@ -15,6 +16,7 @@ export default function Profile() {
 
     const {setToken} = useContext(authContext);
     const {cardItems} = useContext(cartContext);
+    const {ordersCount} = useContext(orderContext);
 
     const navigate = useNavigate();
 
@@ -22,6 +24,7 @@ export default function Profile() {
 
         localStorage.removeItem('auth_token');
         setToken(null);
+
         navigate('/auth');
 
     };
@@ -67,7 +70,7 @@ export default function Profile() {
 
                             <span className={profileCss.data_break}></span>
 
-                        <p><span>0</span> Success purchase</p>
+                        <p><span>{ordersCount}</span> Success purchase</p>
 
                     </div>
 
