@@ -19,6 +19,8 @@ export default function Header() {
 
     useEffect(() => {
 
+        console.log(window.location.host);
+
         const nav_ph = document.getElementById('nav_ph');
         const nav = document.getElementById('nav');
         const profile = document.getElementById('prof');
