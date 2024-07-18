@@ -102,7 +102,7 @@ export default function CheckOut() {
                     ,{
 
                         headers : {token : localStorage.getItem('auth_token')}, 
-                        params : {ulr : "http://localhost:3000"}
+                        params : {ulr : window.location.host}
 
                     }
 
@@ -131,7 +131,7 @@ export default function CheckOut() {
 
                 console.log(data);
 
-                window.open(data.session.url , "_blank");
+                window.open(data.session.url , "_self");
 
             } 
             catch (error) {
