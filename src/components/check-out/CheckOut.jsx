@@ -102,7 +102,7 @@ export default function CheckOut() {
                     ,{
 
                         headers : {token : localStorage.getItem('auth_token')}, 
-                        params : {ulr : window.location.host}
+                        params : {url : `https://${window.location.host}`}
 
                     }
 
@@ -129,8 +129,6 @@ export default function CheckOut() {
 
                 // }
 
-                console.log(data);
-
                 window.open(data.session.url , "_self");
 
             } 
@@ -145,6 +143,8 @@ export default function CheckOut() {
         }
 
     }
+
+    // console.log(cartId);
 
     const checkFormik = useFormik({
 
