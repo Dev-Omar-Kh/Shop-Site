@@ -39,6 +39,26 @@ export default function AllOrders() {
 
     }
 
+    const emptyData = {
+
+        createdAt : '00-00-00000',
+        user : {name : 'Nothing'},
+        shippingAddress : {
+
+            phone : '01xxxxxxxxx',
+            city : 'No Location'
+
+        },
+
+        totalOrderPrice : '0',
+        taxPrice : '0',
+        shippingPrice : '0',
+        paymentMethodType : 'no cash',
+        isPaid : false,
+        isDelivered : false,
+
+    }
+
     if(ordersUser === null){
 
         return <div 
@@ -68,7 +88,8 @@ export default function AllOrders() {
 
             <div className={ordersCss.orders_cont}>
 
-                {ordersUser.map((order , idx) => {return <OrderCard key={idx} data={order} />})}
+                {ordersUser.length > 0 ? <>{ordersUser.map((order , idx) => {return <OrderCard key={idx} data={order} />})}</> 
+                : <OrderCard data={emptyData} /> }
 
             </div>
 

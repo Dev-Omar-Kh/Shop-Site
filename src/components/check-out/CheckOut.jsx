@@ -273,33 +273,34 @@ export default function CheckOut() {
 
                         <div className={checkCss.radio_sec}>
 
-                            <div>
+                            <div className={checkCss.radio_buttons_container}>
 
-                                
-                                <label htmlFor="cash">
+                                <div className={checkCss.radio_button}>
 
-                                    <input id='cash' name="radio" type="radio" />
+                                    <input name="radio-group" id="cash" className={checkCss.radio_button__input} type="radio" />
 
-                                    <button type='button' className={checkCss.button}><span className={checkCss.span_check}></span></button>
+                                    <label htmlFor="cash" className={checkCss.radio_button__label}>
 
-                                    Cash
+                                        <span className={checkCss.radio_button__custom}></span>
+                                        Cash
 
-                                </label>
+                                    </label>
 
-                            </div>
+                                </div>
 
-                            <div>
+                                <div className={checkCss.radio_button}>
 
-                                
-                                <label htmlFor="online">
+                                    <input name="radio-group" id="online" className={checkCss.radio_button__input} type="radio" />
 
-                                    <input id='online' name="radio" type="radio" />
+                                    <label htmlFor="online" className={checkCss.radio_button__label}>
 
-                                    <button type='button' className={checkCss.button}><span className={checkCss.span_check}></span></button>
+                                        <span className={checkCss.radio_button__custom}></span>
 
-                                    Credit Card
+                                        Online
 
-                                </label>
+                                    </label>
+
+                                </div>
 
                             </div>
 
