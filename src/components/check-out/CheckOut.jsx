@@ -7,6 +7,7 @@ import { cartContext } from '../../contexts/cartContext';
 import Status from '../status/Status';
 import { ThreeCircles } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 export default function CheckOut() {
 
@@ -222,6 +223,12 @@ export default function CheckOut() {
 
         {success ? <Status display={visible} img = {'success'} msg = {success} /> : ''}
         {errorMsg && visible ? <Status display={visible} img = {'error'} msg = {errorMsg} /> : ''}
+
+        <Helmet>
+
+            <title>Check-Out</title>
+
+        </Helmet>
 
         <div className={checkCss.container}>
 

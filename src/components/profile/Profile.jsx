@@ -8,6 +8,7 @@ import { authContext } from '../../contexts/authentication';
 import { jwtDecode } from 'jwt-decode';
 import { cartContext } from '../../contexts/cartContext';
 import { orderContext } from '../../contexts/orderContext';
+import { Helmet } from 'react-helmet';
 
 export default function Profile() {
 
@@ -38,6 +39,12 @@ export default function Profile() {
     } , []);
 
     return <React.Fragment>
+
+        <Helmet>
+
+            <title>{userName + ' - Profile'}</title>
+
+        </Helmet>
 
         <div className={profileCss.profile_cont}>
 

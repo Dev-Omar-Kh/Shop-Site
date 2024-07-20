@@ -20,6 +20,8 @@ import CartContextProvider from './contexts/cartContext';
 import CheckOut from './components/check-out/CheckOut';
 import AllOrders from './components/all-orders/AllOrders';
 import OrderContextProvider from './contexts/orderContext';
+import { Offline, Online } from 'react-detect-offline';
+import OffLine from './components/offline/OffLine';
 
 const router = createBrowserRouter([
 
@@ -54,15 +56,25 @@ export default function App() {
 
     return <React.Fragment>
 
-        <QueryClientProvider client={clientQuery}>
-            <CartContextProvider>
-                <AuthProvider>
-                    <OrderContextProvider>
-                        <RouterProvider router={router} />
-                    </OrderContextProvider>
-                </AuthProvider>
-            </CartContextProvider>
-        </QueryClientProvider>
+        <Online>
+
+            <QueryClientProvider client={clientQuery}>
+                <CartContextProvider>
+                    <AuthProvider>
+                        <OrderContextProvider>
+                            <RouterProvider router={router} />
+                        </OrderContextProvider>
+                    </AuthProvider>
+                </CartContextProvider>
+            </QueryClientProvider>
+
+        </Online>
+
+        <Offline>
+
+            <OffLine />
+
+        </Offline>
 
     </React.Fragment>
 }

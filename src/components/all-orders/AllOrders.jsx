@@ -6,6 +6,7 @@ import { ThreeCircles } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import { orderContext } from '../../contexts/orderContext';
 import { jwtDecode } from 'jwt-decode';
+import { Helmet } from 'react-helmet';
 
 export default function AllOrders() {
 
@@ -77,6 +78,12 @@ export default function AllOrders() {
     }
 
     return <React.Fragment>
+
+        <Helmet>
+
+            <title>All-Orders</title>
+
+        </Helmet>
 
         <div className={ordersCss.container}>
 

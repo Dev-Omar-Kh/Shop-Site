@@ -11,6 +11,7 @@ import { ThreeCircles } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../contexts/authentication';
 import { cartContext } from '../../contexts/cartContext';
+import { Helmet } from 'react-helmet';
 
 export default function Login() {
 
@@ -152,6 +153,12 @@ export default function Login() {
 
         {successMsg ? <Status display={visibility} img = {'success'} msg = {successMsg} /> : ''}
         {errorMsg && displayErrorMsg ? <Status display={visibility} img = {'error'} msg = {errorMsg} /> : ''}
+
+        <Helmet>
+
+            <title>Login-Page</title>
+
+        </Helmet>
 
         <div className={authCss.auth_cont}>
 

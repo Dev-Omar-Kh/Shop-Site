@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import Loading from '../loading/Loading';
 import CateCard from './CateCard';
+import { Helmet } from 'react-helmet';
 
 export default function Categories() {
 
@@ -17,6 +18,12 @@ export default function Categories() {
     const {data , isLoading} = useQuery('getCategories' , getAllCategories);
 
     return <React.Fragment>
+
+        <Helmet>
+
+            <title>Categories-Page</title>
+
+        </Helmet>
 
         <div className={cateCss.container}>
 

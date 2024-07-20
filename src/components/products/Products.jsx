@@ -5,6 +5,7 @@ import ProCard from '../pro-card/ProCard';
 import axios from 'axios';
 import Loading from '../loading/Loading';
 import { useQuery } from 'react-query';
+import { Helmet } from 'react-helmet';
 
 export default function Products() {
 
@@ -36,6 +37,12 @@ export default function Products() {
     // }
 
     return <React.Fragment>
+
+        <Helmet>
+
+            <title>Products-Page</title>
+
+        </Helmet>
 
         <section className={productsCss.container}>
 

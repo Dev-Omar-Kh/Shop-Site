@@ -6,6 +6,7 @@ import Loading from '../loading/Loading';
 import BrandCart from './BrandCard';
 
 import brandsCss from './cBrand.module.css'
+import { Helmet } from 'react-helmet';
 
 export default function Brands() {
 
@@ -18,6 +19,12 @@ export default function Brands() {
     const {data , isLoading} = useQuery('getBrands' , getAllBrands);
 
     return <React.Fragment>
+
+        <Helmet>
+
+            <title>Brands-Page</title>
+
+        </Helmet>
 
         <div className={brandsCss.container}>
 

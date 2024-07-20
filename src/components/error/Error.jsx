@@ -1,9 +1,33 @@
-import React from 'react'
+import React from 'react';
 
-export default function Error() {
-    return<React.Fragment>
+import errorCss from './error.module.css';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
-        <div>Error</div>
+export default function Error(){
+
+    return <React.Fragment>
+
+        <Helmet>
+
+            <title>Error-Page</title>
+
+        </Helmet>
+
+        <div className={errorCss.container}>
+
+            <div className={errorCss.error_cont}>
+
+                <img className={errorCss.img} src={require('../../images/error-new.png')} alt="" />
+
+                <p className={errorCss.exp}>This page does not exist or has expired. If you encounter any problems, please contact us</p>
+
+                <Link className={errorCss.contact} to={'/'}>Go To Home</Link>
+
+            </div>
+
+        </div>
 
     </React.Fragment>
+
 }

@@ -5,6 +5,7 @@ import Status from '../status/Status';
 import { ThreeCircles } from 'react-loader-spinner';
 
 import cCartCss from './cart.module.css';
+import { Helmet } from 'react-helmet';
 
 export default function CartCard({data , del}) {
 
@@ -107,6 +108,12 @@ export default function CartCard({data , del}) {
     }, [errorMsg , success]);
 
     return <React.Fragment>
+
+        <Helmet>
+
+            <title>Your-Cart-Products</title>
+
+        </Helmet>
 
         {success && visible ? <Status display={visible} img = {'success'} msg = {success} /> : ''}
         {errorMsg && visible ? <Status display={visible} img = {'error'} msg = {errorMsg} /> : ''}

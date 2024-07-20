@@ -10,6 +10,8 @@ import cart from '../../images/icons/cart-icon-light.svg'
 import { ThreeCircles } from 'react-loader-spinner';
 import { cartContext } from '../../contexts/cartContext';
 import Status from '../status/Status';
+import { Helmet } from 'react-helmet';
+import Error from './../error/Error';
 
 export default function ProductDetails() {
 
@@ -21,7 +23,7 @@ export default function ProductDetails() {
 
     }
 
-    const {data , isLoading} = useQuery('ProductDetails' , getProductDetails);
+    const {data , isLoading , isError} = useQuery('ProductDetails' , getProductDetails);
 
     // ====== Add-to-cart ======
 
@@ -83,6 +85,12 @@ export default function ProductDetails() {
 
     }, [errorMsg , success]);
 
+    if(isError){
+
+        return <Error />
+
+    }
+
     return <React.Fragment>
 
         {success && visible ? <Status display={visibility} img = {'success'} msg = {success} /> : ''}
@@ -102,6 +110,12 @@ export default function ProductDetails() {
                 />
 
             </div> : <>
+
+                <Helmet>
+
+                    <title>{data.data.data.title}</title>
+
+                </Helmet>
 
                 <div className={detCss.det_imgs}>
 

@@ -10,6 +10,7 @@ import Status from '../status/Status';
 
 import eye from '../../images/icons/eye-icon.svg';
 import eyeSlash from '../../images/icons/eye-slash-icon.svg';
+import { Helmet } from 'react-helmet';
 
 export default function Register() {
 
@@ -164,6 +165,12 @@ export default function Register() {
 
         {success ? <Status display={visible} img = {'success'} msg = {success} /> : ''}
         {errorMsg && visible ? <Status display={visible} img = {'error'} msg = {errorMsg} /> : ''}
+
+        <Helmet>
+
+            <title>Sign-Up-Page</title>
+
+        </Helmet>
 
         <div className={authCss.auth_cont}>
 
