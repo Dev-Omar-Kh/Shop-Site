@@ -21,7 +21,10 @@ export default function OffLine() {
 
         <div className={offCss.container}>
 
-            <img src={require('../../images/offline-h.png')} alt="offline" />
+            <i class="fa-solid fa-power-off"></i>
+            
+            <p>No Connection , Check Your WIFI</p>
+
             <button onClick={reload}>Try Again</button>
 
         </div>
