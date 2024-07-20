@@ -22,7 +22,7 @@ export default function Error(){
 
                 <p className={errorCss.exp}>This page does not exist or has expired. If you encounter any problems, please contact us</p>
 
-                <Link className={errorCss.contact} to={'/'}>Go To Home</Link>
+                <Link className={errorCss.contact} to={'/'}>Go to home</Link>
 
             </div>
 

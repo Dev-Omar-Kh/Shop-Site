@@ -30,12 +30,6 @@ export default function Products() {
 
     });
 
-    // if(isLoading){
-
-    //     return <Loading />
-
-    // }
-
     return <React.Fragment>
 
         <Helmet>

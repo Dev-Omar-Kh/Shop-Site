@@ -27,6 +27,8 @@ const router = createBrowserRouter([
 
     {path : '/' , element : <Layout /> , children : [
 
+        // ====== main-routes ======
+
         {index : true , element : <Home />},
         {path : 'products' , element : <Products />},
         {path : 'cate' , element : <Categories />},
@@ -38,11 +40,18 @@ const router = createBrowserRouter([
 
         ]},
 
+        // ====== user-routes ======
+
         {path : 'profile' , element : <ProtectedRoutes> <Profile /> </ProtectedRoutes>},
         {path : 'cart' , element : <ProtectedRoutes> <Cart /> </ProtectedRoutes>},
-        {path : '/proDet/:id' , element : <ProductDetails />},
         {path : 'checkOut' , element : <CheckOut />},
         {path : 'allorders' , element : <AllOrders />},
+
+        // ======product-route ======
+
+        {path : '/proDet/:id' , element : <ProductDetails />},
+
+        // ====== errors-route ======
 
         {path : '*' , element : <Error />},
 

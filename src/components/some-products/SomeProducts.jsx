@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import ProCard from './../pro-card/ProCard';
 import Loading from '../loading/Loading';
+import { Link } from 'react-router-dom';
 
 export default function SomeProducts() {
 
@@ -36,6 +37,8 @@ export default function SomeProducts() {
             <div className={sProCss.title}>
 
                 <p>Best sales</p>
+
+                <Link to={'/products'}>See More</Link>
 
             </div>
 
