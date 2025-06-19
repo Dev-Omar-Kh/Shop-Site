@@ -47,9 +47,6 @@ export default function Header() {
                 cart.classList.add(headerCss.display_icon_cart);
                 nav_ph.classList.add(headerCss.change);
 
-                // cartNote.style.visibility = 'hidden';
-                // cartNote.style.opacity = '0';
-
                 displayCardNote('hidden' , '0');
 
             }

@@ -65,25 +65,25 @@ export default function App() {
 
     return <React.Fragment>
 
-        <Online>
+        {/* <Online> */}
 
-            <QueryClientProvider client={clientQuery}>
-                <CartContextProvider>
-                    <AuthProvider>
-                        <OrderContextProvider>
-                            <RouterProvider router={router} />
-                        </OrderContextProvider>
-                    </AuthProvider>
-                </CartContextProvider>
-            </QueryClientProvider>
+        <QueryClientProvider client={clientQuery}>
+            <CartContextProvider>
+                <AuthProvider>
+                    <OrderContextProvider>
+                        <RouterProvider router={router} />
+                    </OrderContextProvider>
+                </AuthProvider>
+            </CartContextProvider>
+        </QueryClientProvider>
 
-        </Online>
+        {/* </Online> */}
 
-        <Offline>
+        {/* <Offline>
 
             <OffLine />
 
-        </Offline>
+        </Offline> */}
 
     </React.Fragment>
 }
